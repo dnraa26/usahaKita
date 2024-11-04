@@ -1,16 +1,7 @@
-<x-navbar></x-navbar>
-
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pencarian Perusahaan</title>
-</head>
-
-<body class="bg-gray-100">
-
-    <!-- Container utama -->
+<x-layout>
+    <x-slot:title>Perusahaan</x-slot:title>
+    <x-slot:content>
+        <!-- Container utama -->
     <div class="bg-white py-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
@@ -90,7 +81,5 @@
             </div>
         </div>
     </div>
-
-</body>
-
-</html>
+    </x-slot:content>
+</x-layout>
