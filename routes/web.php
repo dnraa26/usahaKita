@@ -25,3 +25,11 @@ Route::get('/dashboardBusinesman', function () {
 Route::get('/manageProfilPerusahaanBusinesman', function () {
     return view('manageProfilPerusahaanBusinesman');
 });
+
+Route::get('/editProfilePerusahaan', function () {
+    return view('editProfilePerusahaan');
+});
+
+Route::get('/profileLowonganBisnis', function () {
+    return view('profileLowonganBisnis');
+});
