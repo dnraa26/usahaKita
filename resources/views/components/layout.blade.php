@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{{$title}}</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <title>{{ $title }}</title>
     <!-- Styles / Scripts -->
     @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
         @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -904,7 +906,7 @@
 <body>
 
     <x-navbar></x-navbar>
-    {{$content}}
+    {{ $content }}
 
 
 
@@ -913,4 +915,5 @@
 
 
 <script src="https://cdn.jsdelivr.net/npm/flowbite@1.4.5/dist/flowbite.min.js"></script>
+
 </html>

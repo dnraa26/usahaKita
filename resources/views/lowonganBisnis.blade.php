@@ -14,7 +14,7 @@
                     </div>
                     <input type="text" id="simple-search"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5"
-                        placeholder="Search branch name..." required />
+                        placeholder="Search branch name..." />
                 </div>
                 <button type="submit"
                     class="p-2.5 ml-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">
@@ -59,7 +59,7 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-screen-lg mx-auto">
                 <!-- Card 1 -->
-                <a href="/perusahaan" class="block">
+                <a href="/detailLowonganBisnis" class="block">
                     <div class="bg-white border rounded-lg shadow-md p-4 relative">
                         <div class="flex justify-between items-start">
                             <h3 class="text-lg font-semibold">Financial Specialist - Bancassurance - Surabaya</h3>
@@ -85,28 +85,11 @@
                             </div>
                         </div>
                         <p class="text-gray-400 text-xs mt-4">5 days ago</p>
-                        <!-- Bookmark Icon -->
-                        <button class="absolute bottom-2 right-2 text-gray-400 hover:text-gray-600"
-                            onclick="event.stopPropagation()">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M5.25 3.75h13.5c.69 0 1.25.56 1.25 1.25v15.5a.75.75 0 0 1-1.14.65l-6.11-4.07a.75.75 0 0 0-.8 0l-6.11 4.07a.75.75 0 0 1-1.14-.65V5c0-.69.56-1.25 1.25-1.25z" />
-                            </svg>
-                        </button>
                     </div>
                 </a>
 
                 <!-- Card 2 -->
                 <div class="bg-white border rounded-lg shadow-md p-4 relative">
-                    <!-- Bookmark Icon -->
-                    <button class="absolute bottom-2 right-2 text-gray-400 hover:text-gray-600">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" class="w-6 h-6">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M5.25 3.75h13.5c.69 0 1.25.56 1.25 1.25v15.5a.75.75 0 0 1-1.14.65l-6.11-4.07a.75.75 0 0 0-.8 0l-6.11 4.07a.75.75 0 0 1-1.14-.65V5c0-.69.56-1.25 1.25-1.25z" />
-                        </svg>
-                    </button>
                     <div class="flex justify-between items-start">
                         <h3 class="text-lg font-semibold">Financial Specialist - Bancassurance - Jakarta</h3>
                         <span class="text-blue-600 font-semibold">Rp 3M-4.5M</span>
@@ -133,14 +116,6 @@
 
                 <!-- Card 3 -->
                 <div class="bg-white border rounded-lg shadow-md p-4 relative">
-                    <!-- Bookmark Icon -->
-                    <button class="absolute bottom-2 right-2 text-gray-400 hover:text-gray-600">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                            stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M5.25 3.75h13.5c.69 0 1.25.56 1.25 1.25v15.5a.75.75 0 0 1-1.14.65l-6.11-4.07a.75.75 0 0 0-.8 0l-6.11 4.07a.75.75 0 0 1-1.14-.65V5c0-.69.56-1.25 1.25-1.25z" />
-                        </svg>
-                    </button>
                     <div class="flex justify-between items-start">
                         <h3 class="text-lg font-semibold">Financial Specialist - Bancassurance - Jakarta</h3>
                         <span class="text-blue-600 font-semibold">Rp 3M-4.5M</span>
@@ -167,14 +142,6 @@
 
                 <!-- Card 4 -->
                 <div class="bg-white border rounded-lg shadow-md p-4 relative">
-                    <!-- Bookmark Icon -->
-                    <button class="absolute bottom-2 right-2 text-gray-400 hover:text-gray-600">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                            stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M5.25 3.75h13.5c.69 0 1.25.56 1.25 1.25v15.5a.75.75 0 0 1-1.14.65l-6.11-4.07a.75.75 0 0 0-.8 0l-6.11 4.07a.75.75 0 0 1-1.14-.65V5c0-.69.56-1.25 1.25-1.25z" />
-                        </svg>
-                    </button>
                     <div class="flex justify-between items-start">
                         <h3 class="text-lg font-semibold">Financial Specialist - Bancassurance - Jakarta</h3>
                         <span class="text-blue-600 font-semibold">Rp 3M-4.5M</span>

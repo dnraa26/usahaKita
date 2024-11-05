@@ -58,11 +58,11 @@
                 class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white light:bg-gray-800 md:light:bg-gray-900 light:border-gray-700">
                 <li>
                     <a href="/lowonganBisnis"
-                        class="relative py-2 px-3 rounded {{ request()->is('lowonganBisnis') ? 'text-blue-700' : 'text-gray-900' }} hover:text-blue-700 md:p-0 light:text-white group"
+                        class="relative py-2 px-3 rounded {{ request()->is('lowonganBisnis') || request()->is('detailLowonganBisnis') ? 'text-blue-700' : 'text-gray-900' }} hover:text-blue-700 md:p-0 light:text-white group"
                         aria-current="page">
                         Lowongan Bisnis
                         <span
-                            class="absolute bottom-0 left-1/2 h-0.5 bg-blue-700 transform -translate-x-1/2 transition-all duration-300 {{ request()->is('lowonganBisnis') ? 'w-full' : 'w-0 group-hover:w-full' }}"></span>
+                            class="absolute bottom-0 left-1/2 h-0.5 bg-blue-700 transform -translate-x-1/2 transition-all duration-300 {{ request()->is('lowonganBisnis') || request()->is('detailLowonganBisnis') ? 'w-full' : 'w-0 group-hover:w-full' }}"></span>
                     </a>
                 </li>
                 <li>

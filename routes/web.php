@@ -52,5 +52,9 @@ Route::get('/pemilihanRole', function () {
     return view('pemilihanRole');
 });
 
+Route::get('/detailLowonganBisnis', function () {
+    return view('detailLowonganBisnis');
+});
+
 
 require __DIR__.'/auth.php';
