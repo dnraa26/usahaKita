@@ -1,7 +1,19 @@
-<x-layout>
-    <x-slot:title>home page</x-slot:title>
-    <x-slot:content>
-        <div class="relative flex flex-col justify-center items-center h-[calc(100vh-4rem)] bg-cover bg-center"
+<x-navbar>
+</x-navbar>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+</head>
+
+<body>
+
+    <div class="relative flex flex-col justify-center items-center h-[calc(100vh-4rem)] bg-cover bg-center"
         style="background-image: url('{{ asset('img/bgLandingpage.jpg') }}');">
         <!-- Overlay Transparan -->
         <div class="absolute inset-0 bg-black opacity-50"></div>
@@ -23,6 +35,10 @@
     </div>
 
 
-    </x-slot:content>
-</x-layout>
 
+
+
+
+</body>
+
+</html>

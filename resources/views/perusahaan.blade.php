@@ -1,7 +1,7 @@
 <x-layout>
-    <x-slot:title>perusahaan</x-slot:title>
+    <x-slot:title>Perusahaan</x-slot:title>
     <x-slot:content>
-         <!-- Container utama -->
+        <!-- Container utama -->
     <div class="bg-white py-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
@@ -36,7 +36,9 @@
                     <img src="https://via.placeholder.com/100" alt="Danone Logo" class="w-16 h-16 mb-2">
                     <h2 class="text-lg font-semibold">Danone</h2>
                     <p class="text-gray-600">⭐ 4.3 • 70 Ulasan</p>
-                    <button class="mt-3 bg-blue-500 text-white py-1 px-4 rounded">11 Pekerjaan</button>
+                    <a href="profilePerusahaanPartner" class="">
+                    <button class="mt-3 bg-blue-500 text-white py-1 px-4 rounded">Lihat Perusahaan</button>
+                </a>
                 </div>
 
 
