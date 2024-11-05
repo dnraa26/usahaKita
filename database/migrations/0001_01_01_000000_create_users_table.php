@@ -20,10 +20,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->enum('jenis_kelamin',['Pria','Wanita'])->nullable();
-            // $table->integer('role');
-            $table->foreignId('role')->constrained(
-                table: 'role', indexName: 'posts_role_id'
-            )->default('3');
+            $table->foreignId('role')->nullable()->default(3)->constrained('role', 'id')->index('posts_role_id');
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
