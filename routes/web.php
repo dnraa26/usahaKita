@@ -48,5 +48,9 @@ Route::get('/form', function () {
     return view('form.register-perusahaan');
 });
 
+Route::get('/pemilihanRole', function () {
+    return view('pemilihanRole');
+});
+
 
 require __DIR__.'/auth.php';
