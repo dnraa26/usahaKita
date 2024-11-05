@@ -3,6 +3,8 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\checkUser;
+use App\Http\Controllers\pickRole;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -19,6 +21,10 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
+Route::get('/pilihRole', [pickRole::class, 'index'])->name('pilihRole');
+Route::post('/pilihRole', [pickRole::class, 'store'])->name('pickRole');
+
+Route::get('/checkUser', [checkUser::class, 'index'])->name('checkUser');
 
 Route::get('/', function () {
     return view('homePage');
@@ -49,7 +55,7 @@ Route::get('/form', function () {
 });
 
 Route::get('/pemilihanRole', function () {
-    return view('pemilihanRole');
+    return view('form.pemilihanRole');
 });
 
 
