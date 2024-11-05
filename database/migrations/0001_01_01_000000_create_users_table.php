@@ -15,15 +15,15 @@ return new class extends Migration
             $table->id();
             $table->string('nama_depan');
             $table->string('nama_belakang');
-            $table->string('alamat');
-            $table->string('no_telp');
+            $table->string('alamat')->nullable();
+            $table->string('no_telp')->nullable();
             $table->string('email')->unique();
             $table->string('password');
-            $table->enum('jenis_kelamin',['Pria','Wanita']);
+            $table->enum('jenis_kelamin',['Pria','Wanita'])->nullable();
             // $table->integer('role');
             $table->foreignId('role')->constrained(
                 table: 'role', indexName: 'posts_role_id'
-            );
+            )->default('3');
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
