@@ -42,9 +42,9 @@
                     </div>
 
 
-                    <div class=" md:ml-[1050px] md:mt-[-70px] flex space-x-2 md:mb-[30px] ">
+                    <div class=" md:ml-[1050px] md:mt-[-70px] flex space-x-2  ">
                         <a href="editProfilePerusahaan" class="">
-                            <button class="px-4 py-2 bg-blue-600 text-white font-medium rounded hover:bg-blue-700">
+                            <button class="px-4 py-2 bg-blue-600 text-white font-medium rounded hover:bg-blue-700 ">
                                 Edit Profil
                             </button>
                         </a>
