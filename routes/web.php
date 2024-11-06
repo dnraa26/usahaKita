@@ -61,7 +61,7 @@ require __DIR__.'/auth.php';
 
 
 Route::get('/editProfilePerusahaan', function () {
-    return view('editProfilePerusahaan');
+    return view(view: 'editProfilePerusahaan');
 });
 
 Route::get('/profileLowonganBisnis', function () {
