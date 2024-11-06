@@ -8,15 +8,15 @@ class Perusahaan extends Model
 {
     protected $table = 'perusahaan'; 
     protected $fillable = [
+        'user_id',
         'pemilik_perusahaan',
         'email_perusahaan',
-        'nama_bisnis',
+        'nama_perusahaan',
         'no_telp',
         'cabang_pusat',
         'foto_ktp',
         'foto_perusahaan',
         'deskripsi',
-        'status',
-        'alasan',
+        'kategori',
     ];
 }

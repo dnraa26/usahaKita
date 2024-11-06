@@ -7,7 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules;
 
-class SessionRegister extends Controller
+class SessionRegisterController extends Controller
 {
     public function store(Request $request)
     {

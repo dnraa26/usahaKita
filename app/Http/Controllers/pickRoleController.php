@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 
-class pickRole extends Controller
+class pickRoleController extends Controller
 {
     public function index(): View
     {
@@ -23,7 +23,7 @@ class pickRole extends Controller
     {
         
         $request->validate([
-            'role' => ['required', 'int', 'max:2'],
+            'role' => ['required', 'int', 'max:3'],
         ]);
 
         $user = User::create([

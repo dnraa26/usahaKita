@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
-class checkUser extends Controller
+class checkUserController extends Controller
 {
     public function index()
     {   
