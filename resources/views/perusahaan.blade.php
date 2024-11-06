@@ -42,5 +42,6 @@
                     </a>
                 @endforeach
             </div>
+        </div>
     </x-slot:content>
 </x-layout>
