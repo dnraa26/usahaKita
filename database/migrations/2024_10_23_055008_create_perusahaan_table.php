@@ -19,7 +19,7 @@ return new class extends Migration
             // $table->unsignedInteger('user_id');
             $table->string('pemilik_perusahaan');
             $table->string('email_perusahaan');
-            $table->string('nama_bisnis');
+            $table->string('nama_perusahaan');
             $table->string('no_telp');
             $table->unsignedBigInteger('kategori');
             $table->foreign('kategori')->references('id_kategori')->on('kategori_bisnis')->onDelete('restrict');
@@ -27,8 +27,8 @@ return new class extends Migration
             $table->string('foto_ktp');
             $table->string('foto_perusahaan');
             $table->string('deskripsi');
-            $table->enum('status',['terverifikasi','pendding']);
-            $table->string('alasan');
+            $table->enum('status',['terverifikasi','pendding'])->default('pendding');
+            $table->string('alasan')->nullable();
             $table->timestamps();
         });
     }

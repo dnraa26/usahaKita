@@ -3,6 +3,9 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\checkUserController;
+use App\Http\Controllers\pickRoleController;
+use App\Http\Controllers\PerusahaanController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -19,6 +22,10 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
+Route::get('/pilihRole', [pickRoleController::class, 'index'])->name('pilihRole');
+Route::post('/pilihRole', [pickRoleController::class, 'store'])->name('pickRole');
+
+Route::get('/checkUser', [checkUserController::class, 'index'])->name('checkUser');
 
 Route::get('/', function () {
     return view('homePage');
@@ -28,9 +35,9 @@ Route::get('/lowonganBisnis', function () {
     return view('lowonganBisnis');
 })->name('lowonganBisnis');
 
-Route::get('/perusahaan', function () {
-    return view('perusahaan');
-});
+// Route::get('/perusahaan', function () {
+//     return view('perusahaan');
+// })->name('perusahaan');
 
 Route::get('/aboutUs', function () {
     return view('aboutUs');
@@ -49,13 +56,15 @@ Route::get('/form', function () {
 });
 
 Route::get('/pemilihanRole', function () {
-    return view('pemilihanRole');
+    return view('form.pemilihanRole');
 });
 
 Route::get('/detailLowonganBisnis', function () {
     return view('detailLowonganBisnis');
 });
 
+Route::post('/perusahaan/store', [PerusahaanController::class, 'store'])->name('perusahaan.store');
+Route::get('/perusahaan', [PerusahaanController::class, 'index'])->name('perusahaan');
 
 require __DIR__.'/auth.php';
 

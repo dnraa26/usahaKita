@@ -29,6 +29,7 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
+        
         $request->validate([
             'nama_depan' => ['required', 'string', 'max:255'],
             'nama_belakang' => ['required', 'string', 'max:255'],
@@ -36,17 +37,11 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
-        $user = User::create([
-            'nama_depan' => $request->nama_depan,
-            'nama_belakang' => $request->nama_belakang,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
-
-        event(new Registered($user));
-
-        Auth::login($user);
-
-        return redirect(route('lowonganBisnis', absolute: false));
+        session(['nama_depan' =>$request->nama_depan,
+        'nama_belakang' => $request->nama_belakang,
+        'email' => $request->email,
+        'password' => $request->password,
+    ]);
+        return redirect(route('pilihRole', absolute: false));
     }
 }
