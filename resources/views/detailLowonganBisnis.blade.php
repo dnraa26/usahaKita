@@ -26,14 +26,9 @@
                     <svg class="w-5 h-5 mr-2 text-gray-500" fill="currentColor" viewBox="0 0 20 20">
                         <!-- Ikon bidang -->
                     </svg>
-                    Matematika, Statistik & Teknik Informasi (Sains & Teknologi)
+                    Makanan ayam goreng enak
                 </p>
-                <p class="flex items-center text-gray-700 mb-2">
-                    <svg class="w-5 h-5 mr-2 text-gray-500" fill="currentColor" viewBox="0 0 20 20">
-                        <!-- Ikon status -->
-                    </svg>
-                    Full time
-                </p>
+
                 <p class="flex items-center text-gray-700">
                     <svg class="w-5 h-5 mr-2 text-gray-500" fill="currentColor" viewBox="0 0 20 20">
                         <!-- Ikon gaji -->

@@ -907,7 +907,7 @@
 
     <x-navbar></x-navbar>
     {{ $content }}
-    {{-- <x-footer></x-footer> --}}
+    <x-footer></x-footer>
 
 
 
