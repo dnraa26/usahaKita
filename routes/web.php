@@ -70,7 +70,7 @@ require __DIR__.'/auth.php';
 
 
 Route::get('/editProfilePerusahaan', function () {
-    return view(view: 'editProfilePerusahaan');
+    return view('form.editProfilePerusahaan');
 });
 
 Route::get('/profileLowonganBisnis', function () {
@@ -78,9 +78,13 @@ Route::get('/profileLowonganBisnis', function () {
 });
 
 Route::get('/editLowonganBisnis', function () {
-    return view('editLowonganBisnis');
+    return view('form.editLowonganBisnis');
 });
 
 Route::get('/profilePerusahaanPartner', function () {
     return view('profilePerusahaanPartner');
+});
+
+Route::get('/tambahLowonganBisnis', function () {
+    return view('form.tambahLowonganBisnis');
 });

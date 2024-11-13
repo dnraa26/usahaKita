@@ -1,7 +1,7 @@
 <x-layout>
     <x-slot:title>Manage Perusahaan</x-slot:title>
     <x-slot:content>
-        <div class="flex min-h-screen bg-gray-100">
+        <div class="flex min-h-screen bg-gray-100 ">
             <!-- Sidebar -->
             <aside class="w-64 bg-white shadow-lg">
                 <div class="p-6">
@@ -26,295 +26,236 @@
             </aside>
 
             <!-- Profile Section -->
-            <div class="flex-1 p-8">
+            <div class="flex-1 p-5 ">
                 <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                    <!-- Banner Section -->
-                    <div class="relative h-40 bg-sky-100 items-center md:mb-[90px]">
-                        <!-- Small Circular Images -->
-                        <div class="absolute top-3 left-6 w-10 h-10 bg-orange-300 rounded-full border-4 border-white">
-                        </div>
-                        <div class="absolute top-3 right-6 w-10 h-10 bg-green-300 rounded-full border-4 border-white">
-                        </div>
-                        <div class="flex items-center p-4">
-                            <img src="https://cloud.jpnn.com/photo/arsip/normal/2022/10/08/zee-jkt48-foto-instagramjkt48zee-rys9o-galg.jpg"
-                                alt="Profile Image"
-                                class="w-44 h-44 rounded-full border-4 border-white shadow-lg md:mt-[40px]">
-                            <p class="text-3xl font-bold text-gray-800 md:ml-[40px] md:mt-[-30px]">
-                                Yuyun Food
-                            </p>
-                            <p class="text-base  text-gray-800 md:ml-[-162px] md:mt-[30px]">
-                                Warung
-                            </p>
-                        </div>
 
-
-                        <div class=" md:ml-[1050px] md:mt-[-70px] flex space-x-2  ">
-                            <a href="editProfilePerusahaan" class="">
-                                <button class="px-4 py-2 bg-blue-600 text-white font-medium rounded hover:bg-blue-700 ">
-                                    Edit Profil
-                                </button>
-                            </a>
+                    <div class="flex items-center p-6 bg-blue-600 md:mb-[30px]">
+                        <img class="w-24 h-24 rounded-full border-4 border-white shadow-md"
+                            src="https://via.placeholder.com/150" alt="Logo Perusahaan">
+                        <div class="ml-6">
+                            <h3 class="text-2xl font-semibold text-white">Nama Perusahaan</h3>
+                            <p class="text-white opacity-80">Bidang Industri</p>
                         </div>
                     </div>
 
+                    <div class="flex-1 p-5  " x-data="{ openEditProfilePerusahaan: false }">
+                        <!-- Button to Open Modal Perusahaan -->
+                        <div class="flex justify-end md:mb-[30px]">
+                            <button @click="openEditProfilePerusahaan = true"
+                                class="px-5 py-2 bg-blue-600 text-white font-medium rounded-lg shadow hover:bg-blue-700">
+                                Edit Profil
+                            </button>
+                        </div>
+
+                        <!-- Modal Background Overlay Perusahaan-->
+                        <div x-show="openEditProfilePerusahaan"
+                            x-effect="document.body.style.overflow = openEditProfilePerusahaan ? 'hidden' : 'auto'"
+                            class="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center z-50"
+                            style="display: none;">
+
+                            <!-- Modal Content   Perusahaan-->
+                            <div @click.away="openEditProfilePerusahaan = false"
+                                class="bg-white rounded-lg shadow-lg w-full max-w-md p-6 relative z-50 overflow-y-auto max-h-[80vh]">
+                                <h2 class="text-2xl font-semibold text-gray-800 mb-4">Edit Profil Perusahaan</h2>
+
+                                <!-- Form Edit Profile  Perusahaan-->
+                                <form action="#" method="POST" class="space-y-4">
+                                    <div>
+                                        <label class="block text-gray-700 font-semibold">Nama Perusahaan</label>
+                                        <input type="text" name="company_name" placeholder="Nama Perusahaan"
+                                            class="w-full mt-2 p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    </div>
+
+                                    <div>
+                                        <label class="block text-gray-700 font-semibold">Nama Pemilik Perusahaan</label>
+                                        <input type="text" name="company_name" placeholder="Nama Perusahaan"
+                                            class="w-full mt-2 p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    </div>
+
+                                    <div>
+                                        <label class="block text-gray-700 font-semibold">Bidang Industri</label>
+                                        <input type="text" name="industry" placeholder="Bidang Industri"
+                                            class="w-full mt-2 p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    </div>
+
+                                    <div>
+                                        <label class="block text-gray-700 font-semibold">Email</label>
+                                        <input type="email" name="email" placeholder="Email Perusahaan"
+                                            class="w-full mt-2 p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    </div>
+
+                                    <div>
+                                        <label class="block text-gray-700 font-semibold">Phone</label>
+                                        <input type="text" name="phone" placeholder="Nomor Telepon Perusahaan"
+                                            class="w-full mt-2 p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    </div>
+
+                                    <div>
+                                        <label class="block text-gray-700 font-semibold">Alamat</label>
+                                        <textarea name="address" rows="3" placeholder="Alamat Perusahaan"
+                                            class="w-full mt-2 p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                                    </div>
+
+                                    <div>
+                                        <label class="block text-gray-700 font-semibold">Tentang Perusahaan</label>
+                                        <textarea name="address" rows="3" placeholder="Alamat Perusahaan"
+                                            class="w-full mt-2 p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                                    </div>
 
 
-                    <!-- Larger Profile Image -->
 
 
+                                    <!-- Button Actions Perusahaan -->
+                                    <div class="flex justify-end mt-6">
+                                        <button type="button" @click="openEditProfilePerusahaan = false"
+                                            class="px-4 py-2 bg-gray-300 text-gray-800 rounded-lg mr-2">Batal</button>
+                                        <button type="submit"
+                                            class="px-4 py-2 bg-blue-600 text-white font-medium rounded-lg shadow hover:bg-blue-700">Simpan</button>
 
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
 
+                    {{-- <div class="content"> --}}
                     <!-- Kontak Section -->
-                    <div class="md:mb-[30px] bg-gray-50 border-l-4 border-blue-500 shadow-md rounded-lg p-6 mb-6">
+                    <div class="md:mb-[30px] bg-gray-50 border-l-4 border-blue-500 shadow-md rounded-lg p-6 ">
                         <h3 class="text-lg font-semibold text-gray-800 mb-2">Kontak</h3>
-                        <p class="text-gray-600"><strong>Email:</strong> zeeasadel@example.com</p>
-                        <p class="text-gray-600"><strong>Phone:</strong> +62 812 3456 7890</p>
+                        <p class="text-gray-600"><b>Email:</b> zeeasadel@example.com</p>
+                        <p class="text-gray-600"><b>Phone:</b> +62 812 3456 7890</p>
                     </div>
-
-                    <!-- Deskripsi Perusahaan Section -->
-                    <div class="md:mb-[30px] bg-gray-50 border-l-4 border-blue-500 shadow-md rounded-lg p-6 mb-6">
-                        <h3 class="text-lg font-semibold text-gray-800 mb-2">Deskripsi Perusahaan</h3>
-                        <p class="text-gray-700 leading-relaxed">
-                            Kami adalah perusahaan yang bergerak di bidang pengembangan bakat dan memberikan kesempatan
-                            kerja di berbagai bidang. Fokus kami adalah membantu perusahaan dan individu berkembang
-                            bersama. Kami berkomitmen untuk memberikan layanan terbaik kepada para klien dan mitra kerja
-                            kami.
-                        </p>
+                    <!-- Nama Pemilik Section -->
+                    <div class="md:mb-[30px] bg-gray-50 border-l-4 border-blue-500 shadow-md rounded-lg p-6 ">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Nama Pemilik Perusahaan</h3>
+                        <p class="text-gray-600">Zee</p>
                     </div>
 
                     <!-- Alamat Section -->
-                    <div class="md:mb-[30px] bg-gray-50 border-l-4 border-blue-500 shadow-md rounded-lg p-6 mb-6">
+                    <div class="md:mb-[30px] bg-gray-50 border-l-4 border-blue-500 shadow-md rounded-lg p-6 ">
                         <h3 class="text-xl font-semibold text-gray-800 mb-2">Alamat Perusahaan</h3>
                         <p class="text-gray-600">Jalan Darjo</p>
                     </div>
 
-                    <div
-                        class="relative md:mb-[30px] bg-gray-50 border-l-4 border-blue-500 shadow-md rounded-lg p-6 mb-6">
+                    <!-- Deskripsi Perusahaan Section -->
+                    <div class="md:mb-[30px] bg-gray-50 border-l-4 border-blue-500 shadow-md rounded-lg p-6 ">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2">Deskripsi Perusahaan</h3>
+                        <p class="text-gray-700 leading-relaxed">
+                            Kami adalah perusahaan yang bergerak di bidang pengembangan bakat dan memberikan
+                            kesempatan
+                            kerja di berbagai bidang. Fokus kami adalah membantu perusahaan dan individu berkembang
+                            bersama. Kami berkomitmen untuk memberikan layanan terbaik kepada para klien dan mitra
+                            kerja
+                            kami.
+                        </p>
+                    </div>
+
+
+
+                    <div class=" md:mb-[30px] bg-gray-50 border-l-4 border-blue-500 shadow-md rounded-lg p-6 ">
                         <h3 class="text-xl font-semibold text-gray-800 mb-2">List Lowongan Bisnis</h3>
                         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
                             {{-- Card --}}
-                            <div class="relative bg-white p-4 rounded-lg shadow-lg flex flex-col items-center">
-                                <a href="editLowonganBisnis"
-                                    class="absolute top-2 right-2 text-gray-400 hover:text-gray-600">
+                            <div class="relative bg-white p-4 rounded-lg shadow-lg flex flex-col items-center"
+                                x-data="{ openEditProfileLowongan: false }">
+
+                                <button @click="openEditProfileLowongan = true"
+                                    class= "absolute top-2 right-2 text-gray-400 hover:text-gray-600">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
                                         viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M12 20h9m-3.39-3.39l-1.67 1.67a2 2 0 01-2.83 0L3 12V7a1 1 0 011-1h5l9.61 9.61z" />
                                     </svg>
-                                </a>
+                                </button>
+
+
+
+
+                                <div x-show="openEditProfileLowongan"
+                                    x-effect="document.body.style.overflow = openEditProfileLowongan ? 'hidden' : 'auto'"
+                                    class="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center z-50"
+                                    style="display: none;">
+
+
+
+                                    <!-- Modal Content -->
+                                    <div @click.away="openEditProfileLowongan = false"
+                                        class="bg-white rounded-lg shadow-lg w-full max-w-md p-6 relative z-50 overflow-y-auto max-h-[80vh]">
+                                        <h2 class="text-2xl font-semibold text-gray-800 mb-4">Edit Profil Lowongan
+                                            Bisnis</h2>
+
+                                        <!-- Form Edit Profile -->
+                                        <form action="#" method="POST" class="space-y-4">
+                                            <div>
+                                                <label class="block text-gray-700 font-semibold">Nama Lowongan
+                                                    Bisnis</label>
+                                                <input type="text" name="company_name"
+                                                    placeholder="Nama Perusahaan"
+                                                    class="w-full mt-2 p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                            </div>
+
+                                            <div>
+                                                <label class="block text-gray-700 font-semibold">Alamat Cabang
+                                                    Perusahaan</label>
+                                                <textarea name="address" rows="3" placeholder="Alamat Perusahaan"
+                                                    class="w-full mt-2 p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                                            </div>
+
+                                            <div>
+                                                <label class="block text-gray-700 font-semibold">Kualifikasi</label>
+                                                <textarea name="address" rows="3" placeholder="Alamat Perusahaan"
+                                                    class="w-full mt-2 p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                                            </div>
+
+                                            <div>
+                                                <label class="block text-gray-700 font-semibold">Keuntungan</label>
+                                                <textarea name="address" rows="3" placeholder="Alamat Perusahaan"
+                                                    class="w-full mt-2 p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                                            </div>
+
+                                            <!-- Button Actions -->
+                                            <div class="flex justify-end mt-6" x-data="{ openEditProfileLowongan: false }">
+                                                <button type="button" @click="openEditProfileLowongan = false"
+                                                    class="px-4 py-2 bg-gray-300 text-gray-800 rounded-lg mr-2">Batal</button>
+                                                <button type="submit"
+                                                    class="px-4 py-2 bg-blue-600 text-white font-medium rounded-lg shadow hover:bg-blue-700">Simpan</button>
+
+
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+
+
+
+
                                 <img src="https://via.placeholder.com/100" alt="Danone Logo" class="w-16 h-16 mb-2">
                                 <h2 class="text-lg font-semibold">Danone</h2>
                                 <p class="text-gray-600">⭐ 4.3 • 70 Ulasan</p>
                                 <button class="mt-3 bg-blue-500 text-white py-1 px-4 rounded">11 Pekerjaan</button>
                             </div>
 
-                            <div class="relative bg-white p-4 rounded-lg shadow-lg flex flex-col items-center">
-                                <a href="#" class="absolute top-2 right-2 text-gray-400 hover:text-gray-600">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
-                                        viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M12 20h9m-3.39-3.39l-1.67 1.67a2 2 0 01-2.83 0L3 12V7a1 1 0 011-1h5l9.61 9.61z" />
-                                    </svg>
-                                </a>
-                                <img src="https://via.placeholder.com/100" alt="Danone Logo" class="w-16 h-16 mb-2">
-                                <h2 class="text-lg font-semibold">Danone</h2>
-                                <p class="text-gray-600">⭐ 4.3 • 70 Ulasan</p>
-                                <button class="mt-3 bg-blue-500 text-white py-1 px-4 rounded">11 Pekerjaan</button>
-                            </div>
 
-                            <div class="relative bg-white p-4 rounded-lg shadow-lg flex flex-col items-center">
-                                <a href="#" class="absolute top-2 right-2 text-gray-400 hover:text-gray-600">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
-                                        viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M12 20h9m-3.39-3.39l-1.67 1.67a2 2 0 01-2.83 0L3 12V7a1 1 0 011-1h5l9.61 9.61z" />
-                                    </svg>
-                                </a>
-                                <img src="https://via.placeholder.com/100" alt="Danone Logo" class="w-16 h-16 mb-2">
-                                <h2 class="text-lg font-semibold">Danone</h2>
-                                <p class="text-gray-600">⭐ 4.3 • 70 Ulasan</p>
-                                <button class="mt-3 bg-blue-500 text-white py-1 px-4 rounded">11 Pekerjaan</button>
-                            </div>
-
-                            <div class="relative bg-white p-4 rounded-lg shadow-lg flex flex-col items-center">
-                                <a href="#" class="absolute top-2 right-2 text-gray-400 hover:text-gray-600">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
-                                        viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M12 20h9m-3.39-3.39l-1.67 1.67a2 2 0 01-2.83 0L3 12V7a1 1 0 011-1h5l9.61 9.61z" />
-                                    </svg>
-                                </a>
-                                <img src="https://via.placeholder.com/100" alt="Danone Logo" class="w-16 h-16 mb-2">
-                                <h2 class="text-lg font-semibold">Danone</h2>
-                                <p class="text-gray-600">⭐ 4.3 • 70 Ulasan</p>
-                                <button class="mt-3 bg-blue-500 text-white py-1 px-4 rounded">11 Pekerjaan</button>
-                            </div>
-
-                            <div class="relative bg-white p-4 rounded-lg shadow-lg flex flex-col items-center">
-                                <a href="#" class="absolute top-2 right-2 text-gray-400 hover:text-gray-600">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
-                                        viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M12 20h9m-3.39-3.39l-1.67 1.67a2 2 0 01-2.83 0L3 12V7a1 1 0 011-1h5l9.61 9.61z" />
-                                    </svg>
-                                </a>
-                                <img src="https://via.placeholder.com/100" alt="Danone Logo" class="w-16 h-16 mb-2">
-                                <h2 class="text-lg font-semibold">Danone</h2>
-                                <p class="text-gray-600">⭐ 4.3 • 70 Ulasan</p>
-                                <button class="mt-3 bg-blue-500 text-white py-1 px-4 rounded">11 Pekerjaan</button>
-                            </div>
-
-                            <div class="relative bg-white p-4 rounded-lg shadow-lg flex flex-col items-center">
-                                <a href="#" class="absolute top-2 right-2 text-gray-400 hover:text-gray-600">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
-                                        viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M12 20h9m-3.39-3.39l-1.67 1.67a2 2 0 01-2.83 0L3 12V7a1 1 0 011-1h5l9.61 9.61z" />
-                                    </svg>
-                                </a>
-                                <img src="https://via.placeholder.com/100" alt="Danone Logo" class="w-16 h-16 mb-2">
-                                <h2 class="text-lg font-semibold">Danone</h2>
-                                <p class="text-gray-600">⭐ 4.3 • 70 Ulasan</p>
-                                <button class="mt-3 bg-blue-500 text-white py-1 px-4 rounded">11 Pekerjaan</button>
-                            </div>
 
                             <div
-                                class="relative bg-white p-4 rounded-lg shadow-lg flex flex-col items-center justify-center">
-                                <a href="#" class="text-blue-500 hover:text-blue-700">
+                                class="relative bg-white p-4 rounded-lg shadow-lg flex flex-col items-center justify-center " >
+                                <button  class="text-blue-500 hover:text-blue-700">
                                     <!-- Plus Icon -->
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none"
                                         viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M12 4v16m8-8H4" />
                                     </svg>
-                                </a>
+                                </button>
                             </div>
 
                         </div>
                     </div>
+
+
                 </div>
             </div>
         </div>
+
     </x-slot:content>
 </x-layout>
-
-
-<!-- Lowongan Bisnis Section -->
-                    {{-- <div class="mb-9">
-    <h3 class="text-lg font-semibold text-gray-800 mb-4 ml-6">Lowongan Bisnis</h3>
-    <div class="relative">
-        <div class="carousel-inner flex transition-transform duration-500 ml-6 mr-6 ">
-            <!-- Job Cards -->
-            <div class="carousel-item flex-shrink-0 w-1/4 bg-white p-4 rounded-lg shadow-lg">
-                <img src="https://via.placeholder.com/100" alt="NSS Logo" class="w-16 h-16 mb-2">
-                <h2 class="text-lg font-semibold">Nusantara Sakti Group</h2>
-                <p class="text-gray-600">⭐ 4.2 • 430 Ulasan</p>
-                <button class="mt-3 bg-blue-500 text-white py-1 px-4 rounded">Lihat Lowongan</button>
-            </div>
-              <!-- Job Cards -->
-            <div class="carousel-item flex-shrink-0 w-1/4 bg-white p-4 rounded-lg shadow-lg ">
-                <img src="https://via.placeholder.com/100" alt="NSS Logo" class="w-16 h-16 mb-2">
-                <h2 class="text-lg font-semibold">Nusantara Sakti Group</h2>
-                <p class="text-gray-600">⭐ 4.2 • 430 Ulasan</p>
-                <button class="mt-3 bg-blue-500 text-white py-1 px-4 rounded">Lihat Lowongan</button>
-            </div>
-
-             <!-- Job Cards -->
-             <div class="carousel-item flex-shrink-0 w-1/4 bg-white p-4 rounded-lg shadow-lg ">
-                <img src="https://via.placeholder.com/100" alt="NSS Logo" class="w-16 h-16 mb-2">
-                <h2 class="text-lg font-semibold">Nusantara Sakti Group</h2>
-                <p class="text-gray-600">⭐ 4.2 • 430 Ulasan</p>
-                <button class="mt-3 bg-blue-500 text-white py-1 px-4 rounded">Lihat Lowongan</button>
-            </div>
-
-             <!-- Job Cards -->
-             <div class="carousel-item flex-shrink-0 w-1/4 bg-white p-4 rounded-lg shadow-lg ">
-                <img src="https://via.placeholder.com/100" alt="NSS Logo" class="w-16 h-16 mb-2">
-                <h2 class="text-lg font-semibold">Nusantara Sakti Group</h2>
-                <p class="text-gray-600">⭐ 4.2 • 430 Ulasan</p>
-                <button class="mt-3 bg-blue-500 text-white py-1 px-4 rounded">Lihat Lowongan</button>
-            </div>
-
-             <!-- Job Cards -->
-             <div class="carousel-item flex-shrink-0 w-1/4 bg-white p-4 rounded-lg shadow-lg">
-                <img src="https://via.placeholder.com/100" alt="NSS Logo" class="w-16 h-16 mb-2">
-                <h2 class="text-lg font-semibold">Nusantara Sakti Group</h2>
-                <p class="text-gray-600">⭐ 4.2 • 430 Ulasan</p>
-                <button class="mt-3 bg-blue-500 text-white py-1 px-4 rounded">Lihat Lowongan</button>
-            </div>
-
-             <!-- Job Cards -->
-             <div class="carousel-item flex-shrink-0 w-1/4 bg-white p-4 rounded-lg shadow-lg ">
-                <img src="https://via.placeholder.com/100" alt="NSS Logo" class="w-16 h-16 mb-2">
-                <h2 class="text-lg font-semibold">Nusantara Sakti Group</h2>
-                <p class="text-gray-600">⭐ 4.2 • 430 Ulasan</p>
-                <button class="mt-3 bg-blue-500 text-white py-1 px-4 rounded">Lihat Lowongan</button>
-            </div>
-
-             <!-- Job Cards -->
-             <div class="carousel-item flex-shrink-0 w-1/4 bg-white p-4 rounded-lg shadow-lg ">
-                <img src="https://via.placeholder.com/100" alt="NSS Logo" class="w-16 h-16 mb-2">
-                <h2 class="text-lg font-semibold">Nusantara Sakti Group</h2>
-                <p class="text-gray-600">⭐ 4.2 • 430 Ulasan</p>
-                <button class="mt-3 bg-blue-500 text-white py-1 px-4 rounded">Lihat Lowongan</button>
-            </div>
-
-             <!-- Job Cards -->
-             <div class="carousel-item flex-shrink-0 w-1/4 bg-white p-4 rounded-lg shadow-lg ">
-                <img src="https://via.placeholder.com/100" alt="NSS Logo" class="w-16 h-16 mb-2">
-                <h2 class="text-lg font-semibold">Nusantara Sakti Group</h2>
-                <p class="text-gray-600">⭐ 4.2 • 430 Ulasan</p>
-                <button class="mt-3 bg-blue-500 text-white py-1 px-4 rounded">Lihat Lowongan</button>
-            </div>
-
-
-             <!-- Job Cards -->
-             <div class="carousel-item flex-shrink-0 w-1/4 bg-white p-4 rounded-lg shadow-lg ">
-                <img src="https://via.placeholder.com/100" alt="NSS Logo" class="w-16 h-16 mb-2">
-                <h2 class="text-lg font-semibold">Nusantara Sakti Group</h2>
-                <p class="text-gray-600">⭐ 4.2 • 430 Ulasan</p>
-                <button class="mt-3 bg-blue-500 text-white py-1 px-4 rounded">Lihat Lowongan</button>
-            </div>
-
-
-
-
-
-
-
-
-            <!-- Repeat Job Card as needed -->
-            <!-- ... -->
-        </div>
-
-        <button id="prev" class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-lg">❮</button>
-        <button id="next" class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-lg">❯</button>
-    </div>
-</div> --}}
-
-
-
-
-{{-- <script>
- document.addEventListener("DOMContentLoaded", function () {
-    const items = document.querySelectorAll('.carousel-item');
-    const visibleItemsCount = 4; // Jumlah kolom yang ingin ditampilkan
-    let currentIndex = 0;
-
-    document.getElementById('next').addEventListener('click', () => {
-        currentIndex = (currentIndex + 1) < (items.length - visibleItemsCount + 1) ? currentIndex + 1 : currentIndex;
-        updateCarousel();
-    });
-
-    document.getElementById('prev').addEventListener('click', () => {
-        currentIndex = (currentIndex - 1) >= 0 ? currentIndex - 1 : currentIndex;
-        updateCarousel();
-    });
-
-    function updateCarousel() {
-        const offset = -currentIndex * (100 / visibleItemsCount); // Menggeser carousel sesuai jumlah kolom
-        document.querySelector('.carousel-inner').style.transform = `translateX(${offset}%)`;
-    }
-});
-
-</script> --}}

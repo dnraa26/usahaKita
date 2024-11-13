@@ -10,7 +10,7 @@
         <p class="text-center text-5xl font-bold text-white relative z-10 py-5">
             Partner for Growth, Together Towards Success
         </p>
-        <p class="text-center text-xl text-gray-200 relative z-10 py-7">
+        <p class="text-center text-xl text-gray-200 relative z-10 py-7 ">
             Empowering Your Business Connections
         </p>
 

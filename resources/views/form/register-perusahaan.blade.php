@@ -34,7 +34,7 @@
                                             </label>
                                         </div>
                                     </div>
-                                
+
                                     <div class="md:space-y-2 mb-3 w-1/2">
                                         <label class="text-xs font-semibold text-gray-600 py-2">Logo Perusahaan<abbr class="hidden" title="required">*</abbr></label>
                                         <div class="flex items-center py-6">
@@ -51,7 +51,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                
+
 
 
                                 <div class="md:flex flex-row md:space-x-4 w-full text-xs">
