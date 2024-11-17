@@ -1,4 +1,4 @@
-<nav class="bg-white border-gray-200 light:bg-gray-900">
+<nav class="fixed top-0 left-0 w-full bg-white border-b border-gray-200 z-50 light:bg-gray-900">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
             <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo" />
@@ -20,6 +20,9 @@
                     <span class="block text-sm text-gray-500 truncate light:text-gray-400">name@flowbite.com</span>
                 </div>
                 <ul class="py-2" aria-labelledby="user-menu-button">
+                    <li><a href="/profile"
+                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 light:hover:bg-gray-600 light:text-gray-200 light:hover:text-white">Profile</a>
+                    </li>
                     <li><a href="/dashboardBusinesman"
                             class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 light:hover:bg-gray-600 light:text-gray-200 light:hover:text-white">Dashboard</a>
                     </li>

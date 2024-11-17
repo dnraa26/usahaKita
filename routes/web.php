@@ -88,3 +88,7 @@ Route::get('/profilePerusahaanPartner', function () {
 Route::get('/tambahLowonganBisnis', function () {
     return view('form.tambahLowonganBisnis');
 });
+
+Route::get('/profile', function () {
+    return view('profile');
+});

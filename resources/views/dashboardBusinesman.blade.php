@@ -11,12 +11,12 @@
                     <ul>
                         <a href="/dashboardBusinesman" class="text-gray-600">
                             <li
-                                class="p-4 {{ request()->is('dashboardBusinesman') ? 'bg-gray-200' : 'text-gray-600' }} hover:bg-gray-200">
+                                class="p-4 rounded-lg {{ request()->is('dashboardBusinesman') ? 'bg-gray-200' : 'text-gray-600' }}">
                                 Tambah Lowongan Bisnis
                             </li>
                         </a>
                         <a href="/manageProfilPerusahaanBusinesman" class="text-gray-600">
-                            <li class="p-4 hover:bg-gray-200">
+                            <li class="p-4 rounded-lg hover:bg-gray-200">
                                 Manage Profil Perusahaan
                             </li>
                         </a>
@@ -26,50 +26,54 @@
 
             <!-- Main content -->
             <div class="flex-1 p-8">
-                <div class="flex justify-between items-center mb-4">
-                    <h2 class="text-xl font-bold">Daftar Lowongan</h2>
-                    <button class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">+ Tambah Lowongan</button>
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-2xl font-bold text-gray-800">Daftar Lowongan</h2>
+                    <button class="px-6 py-2 bg-blue-500 text-white text-sm font-medium rounded-lg shadow hover:bg-blue-600 transition">
+                        + Tambah Lowongan
+                    </button>
                 </div>
 
                 <!-- Tabel Lowongan -->
-                <div class="overflow-x-auto">
-                    <table class="min-w-full bg-white border border-gray-200">
-                        <thead>
-                            <tr class="bg-gray-100">
-                                <th class="px-6 py-3 border-b border-gray-200 text-left text-sm font-medium text-gray-600">Judul
-                                    Lowongan Bisnis</th>
-                                <th class="px-6 py-3 border-b border-gray-200 text-left text-sm font-medium text-gray-600">
-                                    Jumlah Lowongan Bisnis</th>
-                                <th class="px-6 py-3 border-b border-gray-200 text-left text-sm font-medium text-gray-600">
+                <div class="overflow-x-auto bg-white rounded-lg shadow-md">
+                    <table class="min-w-full border-collapse border border-gray-200">
+                        <thead class="bg-blue-500 text-white">
+                            <tr>
+                                <th class="px-6 py-3 border-b border-gray-200 text-left text-sm font-medium uppercase">
+                                    Judul Lowongan Bisnis</th>
+                                <th class="px-6 py-3 border-b border-gray-200 text-left text-sm font-medium uppercase">
+                                    Jumlah Lowongan</th>
+                                <th class="px-6 py-3 border-b border-gray-200 text-left text-sm font-medium uppercase">
                                     Requirement</th>
-                                <th class="px-6 py-3 border-b border-gray-200 text-left text-sm font-medium text-gray-600">
+                                <th class="px-6 py-3 border-b border-gray-200 text-left text-sm font-medium uppercase">
                                     Benefit</th>
-                                <th class="px-6 py-3 border-b border-gray-200 text-left text-sm font-medium text-gray-600">
+                                <th class="px-6 py-3 border-b border-gray-200 text-left text-sm font-medium uppercase">
                                     Lokasi</th>
-                                <th class="px-6 py-3 border-b border-gray-200 text-center text-sm font-medium text-gray-600">
+                                <th class="px-6 py-3 border-b border-gray-200 text-center text-sm font-medium uppercase">
                                     Aksi</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody class="divide-y divide-gray-200">
                             <!-- Contoh data -->
-                            <tr>
-                                <td class="px-6 py-4 border-b border-gray-200">Kemitraan Makanan Fried Chicken</td>
-                                <td class="px-6 py-4 border-b border-gray-200">5</td>
-                                <td class="px-6 py-4 border-b border-gray-200">Memiliki minimal pengalaman 5 tahun, modal usaha
-                                    200.000 </td>
-                                <td class="px-6 py-4 border-b border-gray-200">Resep</td>
-                                <td class="px-6 py-4 border-b border-gray-200">Jakarta</td>
-                                <td class="px-6 py-4 border-b border-gray-200 text-center">
+                            <tr class="hover:bg-gray-100 transition">
+                                <td class="px-6 py-4 text-gray-800">Kemitraan Makanan Fried Chicken</td>
+                                <td class="px-6 py-4 text-gray-800">5</td>
+                                <td class="px-6 py-4 text-gray-800">Memiliki minimal pengalaman 5 tahun, modal usaha 200.000</td>
+                                <td class="px-6 py-4 text-gray-800">Resep</td>
+                                <td class="px-6 py-4 text-gray-800">Jakarta</td>
+                                <td class="px-6 py-4 text-center">
                                     <div class="flex justify-center gap-2">
                                         <button
-                                            class="px-3 py-1 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600">Edit</button>
+                                            class="px-4 py-2 bg-yellow-400 text-white text-sm font-medium rounded-lg shadow hover:bg-yellow-500 transition">
+                                            Edit
+                                        </button>
                                         <button
-                                            class="px-3 py-1 bg-red-500 text-white rounded-lg hover:bg-red-600">Hapus</button>
+                                            class="px-4 py-2 bg-red-500 text-white text-sm font-medium rounded-lg shadow hover:bg-red-600 transition">
+                                            Hapus
+                                        </button>
                                     </div>
                                 </td>
-
                             </tr>
-                            <!-- Ulangi sesuai kebutuhan -->
+
                         </tbody>
                     </table>
                 </div>
@@ -77,4 +81,3 @@
         </div>
     </x-slot:content>
 </x-layout>
-
