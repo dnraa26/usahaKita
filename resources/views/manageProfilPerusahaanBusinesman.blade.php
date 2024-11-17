@@ -47,71 +47,82 @@
                             </button>
                         </div>
 
-                        <!-- Modal Background Overlay Perusahaan-->
+                        <!-- Modal Background Overlay Perusahaan -->
                         <div x-show="openEditProfilePerusahaan"
                             x-effect="document.body.style.overflow = openEditProfilePerusahaan ? 'hidden' : 'auto'"
                             class="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center z-50"
                             style="display: none;">
 
-                            <!-- Modal Content   Perusahaan-->
+                            <!-- Modal Content Perusahaan -->
                             <div @click.away="openEditProfilePerusahaan = false"
-                                class="bg-white rounded-lg shadow-lg w-full max-w-md p-6 relative z-50 overflow-y-auto max-h-[80vh]">
-                                <h2 class="text-2xl font-semibold text-gray-800 mb-4">Edit Profil Perusahaan</h2>
+                                class="bg-white rounded-lg shadow-lg w-3/4 max-w-5xl p-8 relative z-50 overflow-y-auto max-h-[85vh]">
+                                <h2 class="text-3xl font-semibold text-gray-800 mb-6">Edit Profil Perusahaan</h2>
 
-                                <!-- Form Edit Profile  Perusahaan-->
-                                <form action="#" method="POST" class="space-y-4">
-                                    <div>
-                                        <label class="block text-gray-700 font-semibold">Nama Perusahaan</label>
-                                        <input type="text" name="company_name" placeholder="Nama Perusahaan"
-                                            class="w-full mt-2 p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <!-- Form Edit Profile Perusahaan -->
+                                <form action="#" method="POST" class="space-y-6">
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                        <!-- Nama Perusahaan -->
+                                        <div>
+                                            <label class="block text-gray-700 font-semibold mb-2">Nama
+                                                Perusahaan</label>
+                                            <input type="text" name="company_name" placeholder="Nama Perusahaan"
+                                                class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                        </div>
+
+                                        <!-- Nama Pemilik -->
+                                        <div>
+                                            <label class="block text-gray-700 font-semibold mb-2">Nama Pemilik
+                                                Perusahaan</label>
+                                            <input type="text" name="owner_name" placeholder="Nama Pemilik"
+                                                class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                        </div>
+
+                                        <!-- Bidang Industri -->
+                                        <div>
+                                            <label class="block text-gray-700 font-semibold mb-2">Bidang
+                                                Industri</label>
+                                            <input type="text" name="industry" placeholder="Bidang Industri"
+                                                class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                        </div>
+
+                                        <!-- Email -->
+                                        <div>
+                                            <label class="block text-gray-700 font-semibold mb-2">Email</label>
+                                            <input type="email" name="email" placeholder="Email Perusahaan"
+                                                class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                        </div>
+
+                                        <!-- Phone -->
+                                        <div>
+                                            <label class="block text-gray-700 font-semibold mb-2">Phone</label>
+                                            <input type="text" name="phone" placeholder="Nomor Telepon Perusahaan"
+                                                class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                        </div>
+
+                                        <!-- Alamat -->
+                                        <div class="col-span-2">
+                                            <label class="block text-gray-700 font-semibold mb-2">Alamat</label>
+                                            <textarea name="address" rows="3" placeholder="Alamat Perusahaan"
+                                                class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                                        </div>
+
+                                        <!-- Tentang Perusahaan -->
+                                        <div class="col-span-2">
+                                            <label class="block text-gray-700 font-semibold mb-2">Tentang
+                                                Perusahaan</label>
+                                            <textarea name="description" rows="4" placeholder="Deskripsi Singkat Tentang Perusahaan"
+                                                class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                                        </div>
                                     </div>
 
-                                    <div>
-                                        <label class="block text-gray-700 font-semibold">Nama Pemilik Perusahaan</label>
-                                        <input type="text" name="company_name" placeholder="Nama Perusahaan"
-                                            class="w-full mt-2 p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-                                    </div>
-
-                                    <div>
-                                        <label class="block text-gray-700 font-semibold">Bidang Industri</label>
-                                        <input type="text" name="industry" placeholder="Bidang Industri"
-                                            class="w-full mt-2 p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-                                    </div>
-
-                                    <div>
-                                        <label class="block text-gray-700 font-semibold">Email</label>
-                                        <input type="email" name="email" placeholder="Email Perusahaan"
-                                            class="w-full mt-2 p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-                                    </div>
-
-                                    <div>
-                                        <label class="block text-gray-700 font-semibold">Phone</label>
-                                        <input type="text" name="phone" placeholder="Nomor Telepon Perusahaan"
-                                            class="w-full mt-2 p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-                                    </div>
-
-                                    <div>
-                                        <label class="block text-gray-700 font-semibold">Alamat</label>
-                                        <textarea name="address" rows="3" placeholder="Alamat Perusahaan"
-                                            class="w-full mt-2 p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
-                                    </div>
-
-                                    <div>
-                                        <label class="block text-gray-700 font-semibold">Tentang Perusahaan</label>
-                                        <textarea name="address" rows="3" placeholder="Alamat Perusahaan"
-                                            class="w-full mt-2 p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
-                                    </div>
-
-
-
-
-                                    <!-- Button Actions Perusahaan -->
-                                    <div class="flex justify-end mt-6">
+                                    <!-- Button Actions -->
+                                    <div class="flex justify-end mt-8">
                                         <button type="button" @click="openEditProfilePerusahaan = false"
-                                            class="px-4 py-2 bg-gray-300 text-gray-800 rounded-lg mr-2">Batal</button>
+                                            class="px-5 py-3 bg-gray-300 text-gray-800 rounded-lg mr-4">Batal</button>
                                         <button type="submit"
-                                            class="px-4 py-2 bg-blue-600 text-white font-medium rounded-lg shadow hover:bg-blue-700">Simpan</button>
-
+                                            class="px-5 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow hover:bg-blue-700">
+                                            Simpan
+                                        </button>
                                     </div>
                                 </form>
                             </div>
@@ -238,8 +249,8 @@
 
 
                             <div
-                                class="relative bg-white p-4 rounded-lg shadow-lg flex flex-col items-center justify-center " >
-                                <button  class="text-blue-500 hover:text-blue-700">
+                                class="relative bg-white p-4 rounded-lg shadow-lg flex flex-col items-center justify-center ">
+                                <button class="text-blue-500 hover:text-blue-700">
                                     <!-- Plus Icon -->
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none"
                                         viewBox="0 0 24 24" stroke="currentColor">
