@@ -50,7 +50,6 @@
 
 
         <div class="py-8">
-
             <div class="max-w-screen-lg mx-auto">
                 <h2 class="text-2xl font-semibold mb-2">Temukan bisnis Anda</h2>
                 <p class="text-gray-600 mb-6">Jelajahi lowongan bisnis untuk menemukan bisnis yang tepat bagi Anda.
@@ -87,86 +86,7 @@
                         <p class="text-gray-400 text-xs mt-4">5 days ago</p>
                     </div>
                 </a>
-
-                <!-- Card 2 -->
-                <div class="bg-white border rounded-lg shadow-md p-4 relative">
-                    <div class="flex justify-between items-start">
-                        <h3 class="text-lg font-semibold">Financial Specialist - Bancassurance - Jakarta</h3>
-                        <span class="text-blue-600 font-semibold">Rp 3M-4.5M</span>
-                    </div>
-                    <div class="mt-2 flex flex-wrap gap-2">
-                        <span class="bg-yellow-100 text-yellow-700 px-2 py-1 rounded text-sm">Premium Employer</span>
-                        <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-sm">On-site</span>
-                        <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-sm">Full-Time</span>
-                        <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-sm">1 – 3 yrs</span>
-                    </div>
-                    <div class="mt-2">
-                        <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-sm">Minimum Bachelor...</span>
-                        <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-sm">+3</span>
-                    </div>
-                    <div class="mt-4 flex items-center">
-                        <img src="logo.png" alt="Company Logo" class="h-10 w-10 mr-2">
-                        <div>
-                            <p class="text-blue-600 font-medium">Manulife Indonesia (PT Asuransi Jiwa Manulife...)</p>
-                            <p class="text-gray-500 text-sm">Setiabudi, Jakarta Selatan, DKI Jakarta</p>
-                        </div>
-                    </div>
-                    <p class="text-gray-400 text-xs mt-4">5 days ago</p>
-                </div>
-
-                <!-- Card 3 -->
-                <div class="bg-white border rounded-lg shadow-md p-4 relative">
-                    <div class="flex justify-between items-start">
-                        <h3 class="text-lg font-semibold">Financial Specialist - Bancassurance - Jakarta</h3>
-                        <span class="text-blue-600 font-semibold">Rp 3M-4.5M</span>
-                    </div>
-                    <div class="mt-2 flex flex-wrap gap-2">
-                        <span class="bg-yellow-100 text-yellow-700 px-2 py-1 rounded text-sm">Premium Employer</span>
-                        <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-sm">On-site</span>
-                        <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-sm">Full-Time</span>
-                        <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-sm">1 – 3 yrs</span>
-                    </div>
-                    <div class="mt-2">
-                        <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-sm">Minimum Bachelor...</span>
-                        <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-sm">+3</span>
-                    </div>
-                    <div class="mt-4 flex items-center">
-                        <img src="logo.png" alt="Company Logo" class="h-10 w-10 mr-2">
-                        <div>
-                            <p class="text-blue-600 font-medium">Manulife Indonesia (PT Asuransi Jiwa Manulife...)</p>
-                            <p class="text-gray-500 text-sm">Setiabudi, Jakarta Selatan, DKI Jakarta</p>
-                        </div>
-                    </div>
-                    <p class="text-gray-400 text-xs mt-4">5 days ago</p>
-                </div>
-
-                <!-- Card 4 -->
-                <div class="bg-white border rounded-lg shadow-md p-4 relative">
-                    <div class="flex justify-between items-start">
-                        <h3 class="text-lg font-semibold">Financial Specialist - Bancassurance - Jakarta</h3>
-                        <span class="text-blue-600 font-semibold">Rp 3M-4.5M</span>
-                    </div>
-                    <div class="mt-2 flex flex-wrap gap-2">
-                        <span class="bg-yellow-100 text-yellow-700 px-2 py-1 rounded text-sm">Premium Employer</span>
-                        <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-sm">On-site</span>
-                        <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-sm">Full-Time</span>
-                        <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-sm">1 – 3 yrs</span>
-                    </div>
-                    <div class="mt-2">
-                        <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-sm">Minimum Bachelor...</span>
-                        <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-sm">+3</span>
-                    </div>
-                    <div class="mt-4 flex items-center">
-                        <img src="logo.png" alt="Company Logo" class="h-10 w-10 mr-2">
-                        <div>
-                            <p class="text-blue-600 font-medium">Manulife Indonesia (PT Asuransi Jiwa Manulife...)</p>
-                            <p class="text-gray-500 text-sm">Setiabudi, Jakarta Selatan, DKI Jakarta</p>
-                        </div>
-                    </div>
-                    <p class="text-gray-400 text-xs mt-4">5 days ago</p>
-                </div>
             </div>
         </div>
-
     </x-slot:content>
 </x-layout>

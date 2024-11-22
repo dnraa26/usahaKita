@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Perusahaan;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
 use Illuminate\View\View;
 
 class PerusahaanController extends Controller
@@ -22,11 +23,16 @@ class PerusahaanController extends Controller
             'email_perusahaan' => ['required', 'string', 'max:255'],
             'nama_perusahaan' => ['required', 'string', 'max:255'],
             'no_telp' => ['required', 'string', 'max:255'],
+            'website_perusahaan' => ['nullable', 'url', 'max:255'],
+            'provinsi' => ['required', 'string', 'max:255'],
+            'kota' => ['required', 'string', 'max:255'],
+            'kecamatan' => ['required', 'string', 'max:255'],
+            'kelurahan' => ['required', 'string', 'max:255'],
+            'alamat_lengkap' => ['required', 'string'],
             'kategori' => ['required', 'int', 'max:2'],
-            'cabang_pusat' => ['required', 'string', 'max:255'],
             'foto_ktp' => ['required', 'image', 'max:2048'],
             'logo_perusahaan' => ['required', 'image', 'max:2048'],
-            'deskripsi' => ['required', 'string', 'max:255'],
+            'deskripsi' => [ 'string', 'max:255'],
         ]);
 
         $fotoKtpPath = $request->file('foto_ktp')->store('public/foto_ktp');
@@ -38,14 +44,51 @@ class PerusahaanController extends Controller
             'pemilik_perusahaan' => $request->pemilik_perusahaan,
             'email_perusahaan' => $request->email_perusahaan,
             'nama_perusahaan' => $request->nama_perusahaan,
+            'website_perusahaan' => $request->website_perusahaan ?? "-",
             'no_telp' => $request->no_telp,
+            'provinsi' => $request->provinsi,
+            'kota' => $request->kota,
+            'kecamatan' => $request->kecamatan,
+            'kelurahan' => $request->kelurahan,
+            'alamat_lengkap' => strtoupper($request->alamat_lengkap),
             'kategori' => $request->kategori,
-            'cabang_pusat' => $request->cabang_pusat,
             'foto_ktp' => $fotoKtpPath,
             'foto_perusahaan' => $fotoPerusahaanPath,
             'deskripsi' => $request->deskripsi,
         ]);
         
         return redirect(route('perusahaan', absolute: false));
+    }
+
+    public function profilPerusahaan($id){
+        $data = Perusahaan::find($id);
+        return view('profilePerusahaanPartner', compact(['data']));
+    }
+
+    public function getProvinces()
+    {
+        $response = Http::get('https://www.emsifa.com/api-wilayah-indonesia/api/provinces.json');
+        return response()->json($response->json());
+    }
+
+    // Mendapatkan data kabupaten/kota berdasarkan ID provinsi
+    public function getRegencies($id)
+    {
+        $response = Http::get("https://www.emsifa.com/api-wilayah-indonesia/api/regencies/{$id}.json");
+        return response()->json($response->json());
+    }
+
+    // Mendapatkan data kecamatan berdasarkan ID kabupaten/kota
+    public function getDistricts($id)
+    {
+        $response = Http::get("https://www.emsifa.com/api-wilayah-indonesia/api/districts/{$id}.json");
+        return response()->json($response->json());
+    }
+
+    // Mendapatkan data kelurahan/desa berdasarkan ID kecamatan
+    public function getVillages($id)
+    {
+        $response = Http::get("https://www.emsifa.com/api-wilayah-indonesia/api/villages/{$id}.json");
+        return response()->json($response->json());
     }
 }

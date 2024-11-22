@@ -83,8 +83,8 @@
                                                 title="required">*</abbr></label>
                                         <input placeholder="Email"
                                             class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4"
-                                            required type="email" name="email_perusahaan" value="{{ old('email') }}">
-                                        @error('email')
+                                            required type="email" name="email_perusahaan" value="{{ old('email_perusahaan') }}">
+                                        @error('email_perusahaan')
                                             <p class="text-red text-xs">{{ $message }}</p>
                                         @enderror
                                     </div>
@@ -102,17 +102,67 @@
 
                                 <div class="mb-3 space-y-2 w-full text-xs">
                                     <label class="font-semibold text-gray-600 py-2">Website Perusahaan</label>
-                                    <input type="url" name="website" placeholder="https://"
+                                    <input type="url" name="website_perusahaan" placeholder="https://"
                                         class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4"
                                         value="{{ old('website') }}">
                                 </div>
 
                                 <div class="md:flex md:flex-row md:space-x-4 w-full text-xs">
                                     <div class="w-full flex flex-col mb-3">
-                                        <label class="font-semibold text-gray-600 py-2">Alamat Perusahaan</label>
+                                        <label class="font-semibold text-gray-600 py-2">Provinsi:<abbr
+                                                title="required">*</abbr></label>
+                                        <select
+                                            class="block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4"
+                                            name="provinsi" id="provinsi" required>
+                                            <option value="">Pilih</option>
+                                        </select>
+                                        @error('provinsi')
+                                            <p class="text-red text-xs">{{ $message }}</p>
+                                        @enderror
+                                    </div>
+                                    <div class="w-full flex flex-col mb-3">
+                                        <label class="font-semibold text-gray-600 py-2">Kabupaten/Kota:<abbr
+                                                title="required">*</abbr></label>
+                                        <select
+                                            class="block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4"
+                                            name="kota" id="kota" required>
+                                            <option value="">Pilih</option>
+                                        </select>
+                                        @error('kota')
+                                            <p class="text-red text-xs">{{ $message }}</p>
+                                        @enderror
+                                    </div>
+                                    <div class="w-full flex flex-col mb-3">
+                                        <label class="font-semibold text-gray-600 py-2">Kecamatan:<abbr
+                                                title="required">*</abbr></label>
+                                        <select
+                                            class="block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4"
+                                            name="kecamatan" id="kecamatan" required>
+                                            <option value="">Pilih</option>
+                                        </select>
+                                        @error('kecamatan')
+                                            <p class="text-red text-xs">{{ $message }}</p>
+                                        @enderror
+                                    </div>
+                                    <div class="w-full flex flex-col mb-3">
+                                        <label class="font-semibold text-gray-600 py-2">Kelurahan/Desa<abbr
+                                                title="required">*</abbr></label>
+                                        <select
+                                            class="block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4" name="kelurahan" id="kelurahan" required>
+                                            <option value="">Pilih</option>
+                                        </select>
+                                        @error('kelurahan')
+                                            <p class="text-red text-xs">{{ $message }}</p>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="md:flex md:flex-row md:space-x-4 w-full text-xs">
+        
+                                    <div class="w-full flex flex-col mb-3">
+                                        <label class="font-semibold text-gray-600 py-2">Detail Alamat Perusahaan</label>
                                         <input placeholder="Alamat"
                                             class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4"
-                                            type="text" name="cabang_pusat" value="{{ old('alamat') }}">
+                                            type="text" name="alamat_lengkap" value="{{ old('alamat_lengkap') }}">
                                     </div>
                                     <div class="w-full flex flex-col mb-3">
                                         <label class="font-semibold text-gray-600 py-2">Kategori<abbr
@@ -134,7 +184,7 @@
 
                                 <div class="flex-auto w-full mb-1 text-xs space-y-2">
                                     <label class="font-semibold text-gray-600 py-2">Deskripsi Perusahaan</label>
-                                    <textarea required name="deskripsi"
+                                    <textarea name="deskripsi"
                                         class="w-full min-h-[100px] max-h-[300px] h-28 appearance-none block bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg py-4 px-4"
                                         placeholder="Masukkan deskripsi perusahaan">{{ old('deskripsi') }}</textarea>
                                     @error('deskripsi')
@@ -157,5 +207,59 @@
                 </div>
             </div>
         </div>
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                axios.get('/api/provinces')
+                    .then(response => {
+                        let options = '<option value="">Pilih</option>';
+                        document.getElementById('provinsi').innerHTML = '<option value="">Pilih</option>';
+                        document.getElementById('kecamatan').innerHTML = '<option value="">Pilih</option>';
+                        document.getElementById('kelurahan').innerHTML = '<option value="">Pilih</option>';
+                        response.data.forEach(item => {
+                            options += `<option value="${item.name}" data-id="${item.id}">${item.name}</option>`;
+                        });
+                        document.getElementById('provinsi').innerHTML = options;
+                    });
+        
+                document.getElementById('provinsi').addEventListener('change', function() {
+                    const id = this.options[this.selectedIndex].getAttribute('data-id');
+                    axios.get(`/api/regencies/${id}`)
+                        .then(response => {
+                            let options = '<option value="">Pilih</option>';
+                            document.getElementById('kecamatan').innerHTML = '<option value="">Pilih</option>';
+                            document.getElementById('kelurahan').innerHTML = '<option value="">Pilih</option>';
+                            response.data.forEach(item => {
+                                options += `<option value="${item.name}" data-id="${item.id}">${item.name}</option>`;
+                            });
+                            document.getElementById('kota').innerHTML = options;
+                        });
+                });
+        
+                document.getElementById('kota').addEventListener('change', function() {
+                    const id = this.options[this.selectedIndex].getAttribute('data-id');
+                    axios.get(`/api/districts/${id}`)
+                        .then(response => {
+                            let options = '<option value="">Pilih</option>';
+                            document.getElementById('kelurahan').innerHTML = '<option value="">Pilih</option>';
+                            response.data.forEach(item => {
+                                options += `<option value="${item.name}" data-id="${item.id}">${item.name}</option>`;
+                            });
+                            document.getElementById('kecamatan').innerHTML = options;
+                        });
+                });
+        
+                document.getElementById('kecamatan').addEventListener('change', function() {
+                    const id = this.options[this.selectedIndex].getAttribute('data-id');
+                    axios.get(`/api/villages/${id}`)
+                        .then(response => {
+                            let options = '<option value="">Pilih</option>';
+                            response.data.forEach(item => {
+                                options += `<option value="${item.name}">${item.name}</option>`;
+                            });
+                            document.getElementById('kelurahan').innerHTML = options;
+                        });
+                });
+            });
+        </script>
     </x-slot:content>
 </x-layout-form>

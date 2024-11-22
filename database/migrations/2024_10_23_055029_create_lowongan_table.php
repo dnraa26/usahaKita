@@ -21,6 +21,10 @@ return new class extends Migration
             $table->bigInteger('modal_usaha');
             $table->unsignedInteger('jumlah_lowongan');
             $table->string('logo_perusahaan');
+            $table->string('provinsi');
+            $table->string('kota');
+            $table->string('kecamatan');
+            $table->string('kelurahan');
             $table->string('status');
             $table->timestamps();
         });

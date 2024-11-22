@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\checkUserController;
+use App\Http\Controllers\LokasiController;
 use App\Http\Controllers\pickRoleController;
 use App\Http\Controllers\PerusahaanController;
 
@@ -24,8 +25,6 @@ Route::middleware('auth')->group(function () {
 Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 Route::get('/pilihRole', [pickRoleController::class, 'index'])->name('pilihRole');
 Route::post('/pilihRole', [pickRoleController::class, 'store'])->name('pickRole');
-
-Route::get('/checkUser', [checkUserController::class, 'index'])->name('checkUser');
 
 Route::get('/', function () {
     return view('homePage');
@@ -81,10 +80,18 @@ Route::get('/editLowonganBisnis', function () {
     return view('form.editLowonganBisnis');
 });
 
-Route::get('/profilePerusahaanPartner', function () {
-    return view('profilePerusahaanPartner');
-});
+Route::get('/profilePerusahaan/{id}',[PerusahaanController::class,'profilPerusahaan']);
 
 Route::get('/tambahLowonganBisnis', function () {
     return view('form.tambahLowonganBisnis');
 });
+
+
+//Route API Lokasi
+Route::get('/checkUser', [checkUserController::class, 'index'])->name('checkUser');
+// Route::get('/wilayah', [checkUserController::class, 'index']);
+// Route::post('/wilayah', [checkUserController::class, 'store']);
+Route::get('/api/provinces', [PerusahaanController::class, 'getProvinces']);
+Route::get('/api/regencies/{id}', [PerusahaanController::class, 'getRegencies']);
+Route::get('/api/districts/{id}', [PerusahaanController::class, 'getDistricts']);
+Route::get('/api/villages/{id}', [PerusahaanController::class, 'getVillages']);

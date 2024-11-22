@@ -55,7 +55,7 @@
 
                             <!-- Modal Content   Perusahaan-->
                             <div @click.away="openEditProfilePerusahaan = false"
-                                class="bg-white rounded-lg shadow-lg w-full max-w-md p-6 relative z-50 overflow-y-auto max-h-[80vh]">
+                                class="bg-white rounded-lg shadow-lg w-full max-w-[150vh] p-6 relative z-50 overflow-y-auto max-h-[80vh]">
                                 <h2 class="text-2xl font-semibold text-gray-800 mb-4">Edit Profil Perusahaan</h2>
 
                                 <!-- Form Edit Profile  Perusahaan-->
@@ -101,9 +101,6 @@
                                         <textarea name="address" rows="3" placeholder="Alamat Perusahaan"
                                             class="w-full mt-2 p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
                                     </div>
-
-
-
 
                                     <!-- Button Actions Perusahaan -->
                                     <div class="flex justify-end mt-6">

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained(
                 table: 'users', indexName: 'posts_user_id'
             );
+            
             // $table->unsignedInteger('user_id');
             $table->string('pemilik_perusahaan');
             $table->string('email_perusahaan');
@@ -23,10 +24,15 @@ return new class extends Migration
             $table->string('no_telp');
             $table->unsignedBigInteger('kategori');
             $table->foreign('kategori')->references('id_kategori')->on('kategori_bisnis')->onDelete('restrict');
-            $table->string('cabang_pusat');
             $table->string('foto_ktp');
             $table->string('foto_perusahaan');
             $table->string('deskripsi');
+            $table->string('website_perusahaan')->nullable();
+            $table->string('provinsi');
+            $table->string('kota');
+            $table->string('kecamatan');
+            $table->string('kelurahan');
+            $table->string('alamat_lengkap');
             $table->enum('status',['terverifikasi','pendding'])->default('pendding');
             $table->string('alasan')->nullable();
             $table->timestamps();
