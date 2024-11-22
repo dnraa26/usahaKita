@@ -918,5 +918,14 @@
 
 <script src="https://cdn.jsdelivr.net/npm/flowbite@1.4.5/dist/flowbite.min.js"></script>
 
+<script src="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.0"></script>
+
+<!-- Alpine.js -->
+<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.0" defer></script>
+
+<!-- Flowbite -->
+<script src="https://cdn.jsdelivr.net/npm/flowbite@1.6.5/dist/flowbite.min.js"></script>
+
+
 
 </html>
