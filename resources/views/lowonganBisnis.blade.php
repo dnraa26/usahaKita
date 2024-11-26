@@ -46,9 +46,6 @@
                 </div>
             </div>
         @endif
-
-
-
         <div class="py-8">
             <div class="max-w-screen-lg mx-auto">
                 <h2 class="text-2xl font-semibold mb-2">Temukan bisnis Anda</h2>
@@ -58,34 +55,44 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-screen-lg mx-auto">
                 <!-- Card 1 -->
-                <a href="/detailLowonganBisnis" class="block">
-                    <div class="bg-white border rounded-lg shadow-md p-4 relative">
-                        <div class="flex justify-between items-start">
-                            <h3 class="text-lg font-semibold">Financial Specialist - Bancassurance - Surabaya</h3>
-                            <span class="text-blue-600 font-semibold">Rp 3M-4.5M</span>
-                        </div>
-                        <div class="mt-2 flex flex-wrap gap-2">
-                            <span class="bg-yellow-100 text-yellow-700 px-2 py-1 rounded text-sm">Premium
-                                Employer</span>
-                            <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-sm">On-site</span>
-                            <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-sm">Full-Time</span>
-                            <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-sm">1 – 3 yrs</span>
-                        </div>
-                        <div class="mt-2">
-                            <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-sm">Minimum Bachelor...</span>
-                            <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-sm">+3</span>
-                        </div>
-                        <div class="mt-4 flex items-center">
-                            <img src="logo.png" alt="Company Logo" class="h-10 w-10 mr-2">
-                            <div>
-                                <p class="text-blue-600 font-medium">Manulife Indonesia (PT Asuransi Jiwa Manulife...)
-                                </p>
-                                <p class="text-gray-500 text-sm">Wiyung, Surabaya, Jawa Timur</p>
+                @foreach ($lowongan as $lowongans)
+                    <a href="/detailLowonganBisnis/{{ $lowongans->id }}" class="block">
+                        <div class="bg-white border rounded-lg shadow-md p-4 relative">
+                            <div class="flex justify-between items-start">
+                                <h3 class="text-lg font-semibold">{{ $lowongans->nama_lowongan }}</h3>
+                                <span class="text-blue-600 font-semibold">Rp
+                                    {{ number_format($lowongans->modal_usaha, 0, ',', '.') }}</span>
                             </div>
+                            <div class="mt-2 flex flex-wrap gap-2">
+                                @forelse ($lowongans->tags as $no=>$tag)
+                                    @if ($no == 0)
+                                        <span
+                                            class="bg-yellow-100 text-yellow-700 px-2 py-1 rounded text-sm">{{ $tag->nama_tag }}</span>
+                                    @elseif ($no < 3)
+                                    <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-sm">{{ $tag->nama_tag }}</span>
+                                    @elseif ($no == 4)
+                                    <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-sm">{{ $tag->nama_tag }}...</span>
+                                    @endif
+                                @empty
+                                @endforelse
+                            </div>
+                            <div class="mt-4 flex items-center">
+                                @if ($lowongans->perusahaan)
+                                    <img src="{{ asset('storage/' . $lowongans->perusahaan->foto_perusahaan) }}"
+                                        alt="Company Logo" class="h-10 w-10 mr-2">
+                                @else
+                                    <img src="default-logo.png" alt="Company Logo" class="h-10 w-10 mr-2">
+                                @endif
+                                <div>
+                                    <p class="text-blue-600 font-medium">{{ $lowongans->perusahaan->nama_perusahaan }}
+                                    </p>
+                                    <p class="text-gray-500 text-sm">{{ strtolower($lowongans->kelurahan) }},{{ strtolower($lowongans->kecamatan) }},{{ strtolower($lowongans->kota) }},{{ strtolower($lowongans->provinsi) }}</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-400 text-xs mt-4">{{ $lowongans->created_at->diffForHumans() }}</p>
                         </div>
-                        <p class="text-gray-400 text-xs mt-4">5 days ago</p>
-                    </div>
-                </a>
+                    </a>
+                @endforeach
             </div>
         </div>
     </x-slot:content>

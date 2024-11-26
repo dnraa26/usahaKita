@@ -37,7 +37,7 @@
                             <img src="{{ asset('storage/' . $perusahaans->foto_perusahaan) }}" alt="Danone Logo" class="w-16 h-16 mb-2">
                             <h2 class="text-lg font-semibold">{{ $perusahaans->nama_perusahaan }}</h2>
                             <p class="text-gray-600">⭐ 4.3 • 70 Ulasan</p>
-                            <button class="mt-3 bg-blue-500 text-white py-1 px-4 rounded">11 Pekerjaan</button>
+                            <button class="mt-3 bg-blue-500 text-white py-1 px-4 rounded">{{ $perusahaans->lowongan->first()->total_lowongan ?? 0 }} Pekerjaan</button>
                         </div>
                     </a>
                 @endforeach

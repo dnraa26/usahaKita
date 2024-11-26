@@ -9,17 +9,20 @@ class Lowongan extends Model
     protected $table = 'lowongan';
 
     protected $fillable = [
-        'nama_lowongan',
         'perusahaan_id',
+        'nama_lowongan',
         'alamat',
         'requirement',
         'benefit',
         'modal_usaha',
         'jumlah_lowongan',
-        'logo_perusahaan',
+        'provinsi',
+        'kota',
+        'kecamatan',
+        'kelurahan',
         'status',
     ];
-    
+
     public function perusahaan()
     {
         return $this->belongsTo(Perusahaan::class, 'perusahaan_id');
@@ -33,5 +36,11 @@ class Lowongan extends Model
     public function wishlist()
     {
         return $this->hasMany(Wishlist::class, 'lowongan_id');
+    }
+
+    public function tags()
+    {
+        return $this->belongsToMany(TagSpesifikasi::class, 'tagspesifikasi_lowongan', 'lowongan_id', 'tag_id')
+            ->withTimestamps();
     }
 }

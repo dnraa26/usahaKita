@@ -14,19 +14,19 @@ return new class extends Migration
         Schema::create('lowongan', function (Blueprint $table) {
             $table->id();
             $table->string('nama_lowongan');
-            $table->unsignedInteger('perusahaan_id');
-            $table->string('alamat');
+            $table->unsignedBigInteger('perusahaan_id');
+            $table->foreign('perusahaan_id')->references('id')->on('perusahaan')->onDelete('restrict');
             $table->string('requirement');
             $table->string('benefit');
             $table->bigInteger('modal_usaha');
             $table->unsignedInteger('jumlah_lowongan');
-            $table->string('logo_perusahaan');
             $table->string('provinsi');
             $table->string('kota');
             $table->string('kecamatan');
             $table->string('kelurahan');
-            $table->string('status');
+            $table->enum('status',['pendding','ditolak','diterima'])->default('pendding');
             $table->timestamps();
+            
         });
     }
 

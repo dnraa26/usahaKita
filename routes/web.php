@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\checkUserController;
 use App\Http\Controllers\LokasiController;
+use App\Http\Controllers\LowonganController;
 use App\Http\Controllers\pickRoleController;
 use App\Http\Controllers\PerusahaanController;
 
@@ -34,17 +35,15 @@ Route::get('/lowonganBisnis', function () {
     return view('lowonganBisnis');
 })->name('lowonganBisnis');
 
-// Route::get('/perusahaan', function () {
-//     return view('perusahaan');
-// })->name('perusahaan');
 
 Route::get('/aboutUs', function () {
     return view('aboutUs');
 });
 
-Route::get('/dashboardBusinesman', function () {
-    return view('dashboardBusinesman');
-});
+Route::get('/lowonganBisnis',[LowonganController::class, 'index'])->name('lowongan.index');
+Route::get('/dashboardBusinesman',[LowonganController::class, 'create'])->name('lowongan.create');
+Route::put('/dashboardBusinesman/{id}',[LowonganController::class, 'update'])->name('lowongan.update');
+Route::post('/tambahLowongan',[LowonganController::class, 'store'])->name('tambah.lowongan');
 
 Route::get('/manageProfilPerusahaanBusinesman', function () {
     return view('manageProfilPerusahaanBusinesman');
@@ -58,9 +57,7 @@ Route::get('/pemilihanRole', function () {
     return view('form.pemilihanRole');
 });
 
-Route::get('/detailLowonganBisnis', function () {
-    return view('detailLowonganBisnis');
-});
+Route::get('/detailLowonganBisnis/{id}', [LowonganController::class,'show']);
 
 Route::post('/perusahaan/store', [PerusahaanController::class, 'store'])->name('perusahaan.store');
 Route::get('/perusahaan', [PerusahaanController::class, 'index'])->name('perusahaan');

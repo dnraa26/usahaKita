@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Perusahaan;
+use App\Models\Lowongan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 use Illuminate\View\View;
@@ -12,8 +14,11 @@ class PerusahaanController extends Controller
 {
     public function index(): View
     {
-        $perusahaan = Perusahaan::latest()->paginate(10);
-        return view('perusahaan',compact('perusahaan'));
+        $perusahaan = Perusahaan::with(['lowongan' => function ($query) {
+            $query->select('perusahaan_id', DB::raw('SUM(jumlah_lowongan) as total_lowongan'))
+                ->groupBy('perusahaan_id');
+        }])->paginate(10);
+        return view('perusahaan', compact('perusahaan'));
     }
 
     public function store(Request $request)
@@ -32,7 +37,7 @@ class PerusahaanController extends Controller
             'kategori' => ['required', 'int', 'max:2'],
             'foto_ktp' => ['required', 'image', 'max:2048'],
             'logo_perusahaan' => ['required', 'image', 'max:2048'],
-            'deskripsi' => [ 'string', 'max:255'],
+            'deskripsi' => ['string', 'max:255'],
         ]);
 
         $fotoKtpPath = $request->file('foto_ktp')->store('public/foto_ktp');
@@ -56,13 +61,15 @@ class PerusahaanController extends Controller
             'foto_perusahaan' => $fotoPerusahaanPath,
             'deskripsi' => $request->deskripsi,
         ]);
-        
+
         return redirect(route('perusahaan', absolute: false));
     }
 
-    public function profilPerusahaan($id){
+    public function profilPerusahaan($id)
+    {
+        $lowongan = Lowongan::all();
         $data = Perusahaan::find($id);
-        return view('profilePerusahaanPartner', compact(['data']));
+        return view('profilePerusahaanPartner', compact('data', 'lowongan'));
     }
 
     public function getProvinces()

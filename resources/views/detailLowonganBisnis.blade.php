@@ -5,12 +5,13 @@
             <div class="flex items-center mb-4">
                 <!-- Logo Perusahaan -->
                 <div class="mr-4">
-                    <img src="logo-placeholder.png" alt="Logo Company" class="w-16 h-16">
+                    <img src="{{ asset('storage/' . $detailLowongan->perusahaan->foto_perusahaan) }}" alt="Logo Company"
+                        class="w-16 h-16">
                 </div>
                 <!-- Informasi Lowongan -->
                 <div>
-                    <h1 class="text-2xl font-bold">Radit Fried Chicken</h1>
-                    <p class="text-sm text-gray-600">PT Ayam Krenyes</p>
+                    <h1 class="text-2xl font-bold">{{ $detailLowongan->nama_lowongan }}</h1>
+                    <p class="text-sm text-gray-600">PT {{ $detailLowongan->perusahaan->nama_perusahaan }}</p>
                 </div>
             </div>
 
@@ -20,24 +21,24 @@
                     <svg class="w-5 h-5 mr-2 text-gray-500" fill="currentColor" viewBox="0 0 20 20">
                         <!-- Ikon lokasi -->
                     </svg>
-                    Bandung, Jawa Barat
+                    {{ ucwords(strtolower($detailLowongan->kota)) }},{{ ucwords(strtolower($detailLowongan->provinsi)) }}
                 </p>
                 <p class="flex items-center text-gray-700 mb-2">
                     <svg class="w-5 h-5 mr-2 text-gray-500" fill="currentColor" viewBox="0 0 20 20">
                         <!-- Ikon bidang -->
                     </svg>
-                    Makanan ayam goreng enak
+                    {{ $detailLowongan->perusahaan->kategori_bisnis->nama_kategori }}
                 </p>
 
                 <p class="flex items-center text-gray-700">
                     <svg class="w-5 h-5 mr-2 text-gray-500" fill="currentColor" viewBox="0 0 20 20">
                         <!-- Ikon gaji -->
                     </svg>
-                    Rp 4.000.000 – Rp 6.000.000 per month
+                    Mulai Dari Rp {{ number_format($detailLowongan->modal_usaha, 0, ',', '.') }}
                 </p>
             </div>
 
-            <p class="text-sm text-gray-500 mb-4">Posted 1 hari yang lalu</p>
+            <p class="text-sm text-gray-500 mb-4">Posted {{ $detailLowongan->created_at->diffForHumans() }}</p>
 
             <!-- Tombol aksi -->
             <div class="flex space-x-4">
@@ -50,13 +51,11 @@
 
             <!-- Kualifikasi -->
             <div class="mt-8">
-                <h2 class="text-lg font-semibold mb-2">Qualifications:</h2>
+                <h2 class="text-lg font-semibold mb-2">Requirement:</h2>
                 <ul class="list-disc list-inside text-gray-700">
-                    <li>Bachelor’s or Master’s degree in Data Science, Computer Science, Statistics, or a related field.
-                    </li>
-                    <li>Minimum of 2 years of experience as a Data Scientist or in a relevant analytical position.</li>
-                    <li>Proficiency with statistical analysis and machine learning techniques, including supervised and
-                        unsupervised learning.</li>
+                    @foreach ($requirementsArray as $requirement)
+                        <li> {{ $requirement }} </li>
+                    @endforeach
                 </ul>
             </div>
 
@@ -64,10 +63,9 @@
             <div class="mt-8">
                 <h2 class="text-lg font-semibold mb-2">Benefits:</h2>
                 <ul class="list-disc list-inside text-gray-700">
-                    <li>Competitive salary and performance-based bonuses.</li>
-                    <li>Flexible working hours and remote work options.</li>
-                    <li>Comprehensive health insurance coverage.</li>
-                    <li>Professional development and training programs.</li>
+                    @foreach ($benefitArray as $benefit)
+                        <li> {{ $benefit }} </li>
+                    @endforeach
                 </ul>
             </div>
 
@@ -75,13 +73,7 @@
             <div class="mt-8">
                 <h2 class="text-lg font-semibold mb-2">About the Company:</h2>
                 <p class="text-gray-700">
-                    PT Digital Laskar Pelangi (Orderfaz) is an innovative tech company based in Bandung, Jawa Barat,
-                    focusing on
-                    developing cutting-edge solutions in data science, software engineering, and analytics. Our mission
-                    is to
-                    empower businesses with data-driven insights and advanced technological tools to achieve greater
-                    efficiency
-                    and growth.
+                    {{ $detailLowongan->perusahaan->deskripsi }}
                 </p>
             </div>
         </div>

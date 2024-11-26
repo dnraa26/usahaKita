@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Perusahaan extends Model
 {
-    protected $table = 'perusahaan'; 
-    protected $primaryKey = 'id'; 
+    protected $table = 'perusahaan';
+    protected $primaryKey = 'id';
     protected $fillable = [
         'user_id',
         'pemilik_perusahaan',
@@ -32,13 +32,13 @@ class Perusahaan extends Model
     }
 
     public function kategori_bisnis()
-{
-    return $this->belongsTo(KategoriBisnis::class, 'kategori', 'id_kategori');
-}
+    {
+        return $this->belongsTo(KategoriBisnis::class, 'kategori', 'id_kategori');
+    }
 
     public function lowongan()
     {
-        return $this->hasMany(Lowongan::class, foreignKey: 'perusahaan_id');
+        return $this->hasMany(Lowongan::class, 'perusahaan_id');
     }
 
     public function bergabungPerusahaan()
