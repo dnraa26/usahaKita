@@ -10,10 +10,15 @@
                 <nav>
                     <ul>
                         <a href="/dashboardBusinesman" class="text-gray-600">
-                            <li class="p-4 hover:bg-gray-200">Tambah Lowongan Bisnis</li>
+                            <li
+                                class="p-4 rounded-lg {{ request()->is('dashboardBusinesman') ? 'bg-gray-200' : 'text-gray-600' }}">
+                                Tambah Lowongan Bisnis
+                            </li>
                         </a>
                         <a href="/manageProfilPerusahaanBusinesman" class="text-gray-600">
-                            <li class="p-4 hover:bg-gray-200">Manage Profil Perusahaan</li>
+                            <li class="p-4 rounded-lg hover:bg-gray-200">
+                                Manage Profil Perusahaan
+                            </li>
                         </a>
                     </ul>
                 </nav>
@@ -21,170 +26,54 @@
 
             <!-- Main Content -->
             <div class="flex-1 p-8">
-                <div class="flex justify-between items-center mb-4">
-                    <h2 class="text-xl font-bold">Daftar Lowongan</h2>
-                    <button @click="openTambahLowongan = true"
-                        class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-2xl font-bold text-gray-800">Daftar Lowongan</h2>
+                    <button class="px-6 py-2 bg-blue-500 text-white text-sm font-medium rounded-lg shadow hover:bg-blue-600 transition">
                         + Tambah Lowongan
                     </button>
                 </div>
 
-                <!-- Modal Tambah Lowongan -->
-                <div x-show="openTambahLowongan"
-                    x-effect="document.body.style.overflow = openTambahLowongan ? 'hidden' : 'auto'"
-                    style="overflow-y: scroll"
-                    class="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center z-50">
-                    <div class="bg-white rounded-lg shadow-lg max-w-[100vh] w-full p-6 relative"
-                        @click.away="openTambahLowongan = false">
-                        <button @click="openTambahLowongan = false"
-                            class="absolute top-3 right-3 text-gray-600 hover:text-gray-900">&times;</button>
-                        <h2 class="text-2xl font-semibold text-gray-800 mb-4 mt-20">Tambah Lowongan Bisnis</h2>
-                        <form action="{{ route('tambah.lowongan') }}" method="POST" class="space-y-4">
-                            @csrf
-                            <div>
-                                <label class="block text-gray-700 mt-10">Judul Lowongan</label>
-                                <input type="text" name="nama_lowongan" class="w-full p-2 border rounded">
-                            </div>
-                            <div>
-                                <label class="block text-gray-700">Jumlah Lowongan</label>
-                                <input type="number" name="jumlah" min="1" class="w-full p-2 border rounded">
-                            </div>
-                            <div>
-                                <label class="block text-gray-700">Modal Usaha</label>
-                                <input type="number" name="modal_usaha" min="1"
-                                    class="w-full p-2 border rounded">
-                            </div>
-                            <div>
-                                <label class="block text-gray-700">Requirement</label>
-                                <textarea name="requirement" rows="3" class="w-full p-2 border rounded"></textarea>
-                            </div>
-                            <div>
-                                <label class="block text-gray-700">Benefit</label>
-                                <textarea name="benefit" rows="2" class="w-full p-2 border rounded"></textarea>
-                            </div>
-                            <div class="md:flex md:row md:space-x-4 w-full text-xs">
-                                <div class="w-full flex flex-col mb-3">
-                                    <label class="font-semibold text-gray-600 py-2">Provinsi:<abbr
-                                            title="required">*</abbr></label>
-                                    <select
-                                        class="block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4"
-                                        name="provinsi" id="provinsi" required>
-                                        <option value="">Pilih</option>
-                                    </select>
-                                    @error('provinsi')
-                                        <p class="text-red text-xs">{{ $message }}</p>
-                                    @enderror
-                                </div>
-                                <div class="w-full flex flex-col mb-3">
-                                    <label class="font-semibold text-gray-600 py-2">Kabupaten/Kota:<abbr
-                                            title="required">*</abbr></label>
-                                    <select
-                                        class="block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4"
-                                        name="kota" id="kota" required>
-                                        <option value="">Pilih</option>
-                                    </select>
-                                    @error('kota')
-                                        <p class="text-red text-xs">{{ $message }}</p>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="md:flex md:row md:space-x-4 w-full text-xs">
-                                <div class="w-full flex flex-col mb-3">
-                                    <label class="font-semibold text-gray-600 py-2">Kecamatan:<abbr
-                                            title="required">*</abbr></label>
-                                    <select
-                                        class="block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4"
-                                        name="kecamatan" id="kecamatan" required>
-                                        <option value="">Pilih</option>
-                                    </select>
-                                    @error('kecamatan')
-                                        <p class="text-red text-xs">{{ $message }}</p>
-                                    @enderror
-                                </div>
-                                <div class="w-full flex flex-col mb-3">
-                                    <label class="font-semibold text-gray-600 py-2">Kelurahan/Desa<abbr
-                                            title="required">*</abbr></label>
-                                    <select
-                                        class="block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4"
-                                        name="kelurahan" id="kelurahan" required>
-                                        <option value="">Pilih</option>
-                                    </select>
-                                    @error('kelurahan')
-                                        <p class="text-red text-xs">{{ $message }}</p>
-                                    @enderror
-                                </div>
-                            </div>
-                            <label class="font-semibold text-gray-600 py-2">Tag<abbr title="required">*</abbr></label>
-                            <div class="grid grid-rows-4 grid-flow-col gap-4">
-                                @foreach ($tag as $tags)
-                                    <div class="flex">
-                                        <input type="checkbox" name="tags[]" value="{{ $tags->id }}"
-                                            class="shrink-0 mt-0.5 border-gray-200 rounded text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
-                                            id="hs-checkbox-group-1">
-                                        <label for="hs-checkbox-group-1"
-                                            class="text-sm text-gray-500 ms-3">{{ $tags->nama_tag }}</label>
-                                    </div>
-                                @endforeach
-
-                            </div>
-
-                            <div class="flex justify-end gap-2">
-                                <button type="button" @click="openTambahLowongan = false"
-                                    class="px-4 py-2 bg-gray-300 rounded">Batal</button>
-                                <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded">Simpan</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-
                 <!-- Tabel Lowongan -->
-                <div class="overflow-x-auto mt-8">
-                    <table class="min-w-full bg-white border">
-                        <thead>
-                            <tr class="bg-gray-100">
-                                <th class="px-6 py-3 border-b">Judul</th>
-                                <th class="px-6 py-3 border-b">Jumlah</th>
-                                <th class="px-6 py-3 border-b">Requirement</th>
-                                <th class="px-6 py-3 border-b">Benefit</th>
-                                <th class="px-6 py-3 border-b">Lokasi</th>
-                                <th class="px-6 py-3 border-b">tag</th>
-                                <th class="px-6 py-3 border-b text-center">Aksi</th>
+                <div class="overflow-x-auto bg-white rounded-lg shadow-md">
+                    <table class="min-w-full border-collapse border border-gray-200">
+                        <thead class="bg-blue-500 text-white">
+                            <tr>
+                                <th class="px-6 py-3 border-b border-gray-200 text-left text-sm font-medium uppercase">
+                                    Judul Lowongan Bisnis</th>
+                                <th class="px-6 py-3 border-b border-gray-200 text-left text-sm font-medium uppercase">
+                                    Jumlah Lowongan</th>
+                                <th class="px-6 py-3 border-b border-gray-200 text-left text-sm font-medium uppercase">
+                                    Requirement</th>
+                                <th class="px-6 py-3 border-b border-gray-200 text-left text-sm font-medium uppercase">
+                                    Benefit</th>
+                                <th class="px-6 py-3 border-b border-gray-200 text-left text-sm font-medium uppercase">
+                                    Lokasi</th>
+                                <th class="px-6 py-3 border-b border-gray-200 text-center text-sm font-medium uppercase">
+                                    Aksi</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            @foreach ($tableLowongan as $lowongan)
-                                <tr>
-                                    <td class="px-6 py-4 border-b">{{ $lowongan->nama_lowongan }}</td>
-                                    <td class="px-6 py-4 border-b">{{ $lowongan->jumlah_lowongan }}</td>
-                                    <td class="px-6 py-4 border-b">{{ $lowongan->requirement }}</td>
-                                    <td class="px-6 py-4 border-b">{{ $lowongan->benefit }}</td>
-                                    <td class="px-6 py-4 border-b">
-                                        {{ $lowongan->provinsi }},{{ $lowongan->kecamatan }},{{ $lowongan->kelurahan }},{{ $lowongan->kelurahan }}
-                                    </td>
-
-                                    <td class="px-6 py-4 border-b ">
-                                        @forelse ($lowongan->tags as $no=>$tag)
-                                            @if ($no == $lowongan->tags->count() - 1)
-                                                {{ $tag->nama_tag }}
-                                            @else
-                                                {{ $tag->nama_tag }},
-                                            @endif
-                                        @empty
-                                        @endforelse
-                                    </td>
-
-                                    <td class="px-6 py-4 border-b text-center">
+                        <tbody class="divide-y divide-gray-200">
+                            <!-- Contoh data -->
+                            <tr class="hover:bg-gray-100 transition">
+                                <td class="px-6 py-4 text-gray-800">Kemitraan Makanan Fried Chicken</td>
+                                <td class="px-6 py-4 text-gray-800">5</td>
+                                <td class="px-6 py-4 text-gray-800">Memiliki minimal pengalaman 5 tahun, modal usaha 200.000</td>
+                                <td class="px-6 py-4 text-gray-800">Resep</td>
+                                <td class="px-6 py-4 text-gray-800">Jakarta</td>
+                                <td class="px-6 py-4 text-center">
+                                    <div class="flex justify-center gap-2">
                                         <button
-                                            @click="selectedLowongan = {{ $lowongan }}; openEditLowongan = true"
-                                            class="px-3 py-1 bg-yellow-500 text-white rounded">Edit</button>
+                                            class="px-4 py-2 bg-yellow-400 text-white text-sm font-medium rounded-lg shadow hover:bg-yellow-500 transition">
+                                            Edit
+                                        </button>
                                         <button
-                                            @click="selectedLowongan = {{ $lowongan }}; openDeleteModal = true"
-                                            class="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600">
+                                            class="px-4 py-2 bg-red-500 text-white text-sm font-medium rounded-lg shadow hover:bg-red-600 transition">
                                             Hapus
                                         </button>
-                                    </td>
-                                </tr>
-                            @endforeach
+                                    </div>
+                                </td>
+                            </tr>
+
                         </tbody>
                     </table>
                 </div>

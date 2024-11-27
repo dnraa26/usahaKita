@@ -22,7 +22,10 @@
 <body>
 
     <x-navbar></x-navbar>
-    {{ $content }}
+    <div class="pt-16">
+        {{ $content }}
+    </div>
+
     <x-footer></x-footer>
 
 

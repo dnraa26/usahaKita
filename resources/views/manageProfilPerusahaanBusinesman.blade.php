@@ -56,7 +56,12 @@
                             <!-- Modal Content Perusahaan -->
                             <div @click.away="openEditProfilePerusahaan = false"
                                 class="bg-white rounded-lg shadow-lg w-3/4 max-w-5xl p-8 relative z-50 overflow-y-auto max-h-[85vh]">
+                                <button @click="openEditProfilePerusahaan = false"
+                                        class="absolute top-3 right-3 text-gray-600 hover:text-gray-900">&times;</button>
+
                                 <h2 class="text-3xl font-semibold text-gray-800 mb-6">Edit Profil Perusahaan</h2>
+
+
 
                                 <!-- Form Edit Profile Perusahaan -->
                                 <form action="#" method="POST" class="space-y-6">
@@ -191,7 +196,11 @@
 
                                     <!-- Modal Content -->
                                     <div @click.away="openEditProfileLowongan = false"
-                                        class="bg-white rounded-lg shadow-lg w-full max-w-md p-6 relative z-50 overflow-y-auto max-h-[80vh]">
+                                        class="bg-white rounded-lg shadow-lg w-3/4 max-w-5xl p-8 relative z-50 overflow-y-auto max-h-[85vh]">
+
+                                        <button @click="openEditProfileLowongan = false"
+                                        class="absolute top-3 right-3 text-gray-600 hover:text-gray-900">&times;</button>
+
                                         <h2 class="text-2xl font-semibold text-gray-800 mb-4">Edit Profil Lowongan
                                             Bisnis</h2>
 
@@ -225,7 +234,7 @@
                                             </div>
 
                                             <!-- Button Actions -->
-                                            <div class="flex justify-end mt-6" x-data="{ openEditProfileLowongan: false }">
+                                            <div class="flex justify-end mt-6">
                                                 <button type="button" @click="openEditProfileLowongan = false"
                                                     class="px-4 py-2 bg-gray-300 text-gray-800 rounded-lg mr-2">Batal</button>
                                                 <button type="submit"
@@ -248,9 +257,10 @@
 
 
 
-                            <div
-                                class="relative bg-white p-4 rounded-lg shadow-lg flex flex-col items-center justify-center ">
-                                <button class="text-blue-500 hover:text-blue-700">
+                            <div x-data="{ openTambahLowongan: false }"
+                                class="relative bg-white p-4 rounded-lg shadow-lg flex flex-col items-center justify-center">
+                                <button type="button" @click="openTambahLowongan = true"
+                                    class="text-blue-500 hover:text-blue-700">
                                     <!-- Plus Icon -->
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none"
                                         viewBox="0 0 24 24" stroke="currentColor">
@@ -258,6 +268,67 @@
                                             d="M12 4v16m8-8H4" />
                                     </svg>
                                 </button>
+
+                                <div x-show="openTambahLowongan"
+                                    x-effect="document.body.style.overflow = openTambahLowongan ? 'hidden' : 'auto'"
+                                    class="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center z-50"
+                                    style="display: none;">
+
+
+
+                                    <!-- Modal Content -->
+                                    <div @click.away="openTambahLowongan = false"
+                                        class="bg-white rounded-lg shadow-lg w-3/4 max-w-5xl p-8 relative z-50 overflow-y-auto max-h-[85vh]">
+
+                                        <button @click="openTambahLowongan = false"
+                                        class="absolute top-3 right-3 text-gray-600 hover:text-gray-900">&times;</button>
+
+                                        <h2 class="text-2xl font-semibold text-gray-800 mb-4">Tambah Lowongan Bisnis
+                                            Bisnis</h2>
+
+                                        <!-- Form Edit Profile -->
+                                        <form action="#" method="POST" class="space-y-4">
+                                            <div>
+                                                <label class="block text-gray-700 font-semibold">Nama Lowongan
+                                                    Bisnis</label>
+                                                <input type="text" name="company_name"
+                                                    placeholder="Nama Perusahaan"
+                                                    class="w-full mt-2 p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                            </div>
+
+                                            <div>
+                                                <label class="block text-gray-700 font-semibold">Alamat Cabang
+                                                    Perusahaan</label>
+                                                <textarea name="address" rows="3" placeholder="Alamat Perusahaan"
+                                                    class="w-full mt-2 p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                                            </div>
+
+                                            <div>
+                                                <label class="block text-gray-700 font-semibold">Kualifikasi</label>
+                                                <textarea name="address" rows="3" placeholder="Alamat Perusahaan"
+                                                    class="w-full mt-2 p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                                            </div>
+
+                                            <div>
+                                                <label class="block text-gray-700 font-semibold">Keuntungan</label>
+                                                <textarea name="address" rows="3" placeholder="Alamat Perusahaan"
+                                                    class="w-full mt-2 p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                                            </div>
+
+                                            <!-- Button Actions -->
+                                            <div class="flex justify-end mt-6" x-data="{ openEditProfileLowongan: false }">
+                                                <button type="button" @click="openTambahLowongan = false"
+                                                    class="px-4 py-2 bg-gray-300 text-gray-800 rounded-lg mr-2">Batal</button>
+                                                <button type="submit"
+                                                    class="px-4 py-2 bg-blue-600 text-white font-medium rounded-lg shadow hover:bg-blue-700">Simpan</button>
+
+
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+
+
                             </div>
 
                         </div>
