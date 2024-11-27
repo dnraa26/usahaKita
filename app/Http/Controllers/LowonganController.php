@@ -16,11 +16,17 @@ class LowonganController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         Carbon::setLocale('id');
+
+        $query = $request->input('query');
+        $results = Lowongan::where('nama_lowongan', 'LIKE', "%{$query}%")
+            ->orWhere('provinsi', 'LIKE', "%{$query}%")
+            ->paginate(10);
+
         $lowongan = Lowongan::with('tags', 'perusahaan')->orderBy('id', 'asc')->latest()->paginate(10);
-        return view('lowonganBisnis', compact('lowongan'));
+        return view('lowonganBisnis', compact('lowongan', 'query', 'results'));
     }
 
     /**
@@ -92,7 +98,7 @@ class LowonganController extends Controller
         $detailLowongan = Lowongan::with('perusahaan.kategori_bisnis')->find($id);
         $requirementsArray = json_decode($detailLowongan->requirement, true);
         $benefitArray = json_decode($detailLowongan->benefit, true);
-        return view('detailLowonganBisnis', compact('detailLowongan','requirementsArray','benefitArray'));
+        return view('detailLowonganBisnis', compact('detailLowongan', 'requirementsArray', 'benefitArray'));
     }
 
     /**

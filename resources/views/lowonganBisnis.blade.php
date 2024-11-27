@@ -2,7 +2,8 @@
     <x-slot:title>Lowongan Bisnis</x-slot:title>
     <x-slot:content>
         <div class="bg-blue-900 shadow-lg p-8">
-            <form class="flex items-center w-full max-w-screen-lg px-10 mx-auto">
+            <form action="{{ route('search.lowongan') }}" method="GET"
+                class="flex items-center w-full max-w-screen-lg px-10 mx-auto">
                 <label for="simple-search" class="sr-only">Search</label>
                 <div class="relative w-full">
                     <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -12,7 +13,7 @@
                                 d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
                         </svg>
                     </div>
-                    <input type="text" id="simple-search"
+                    <input type="text" id="simple-search" name="query"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5"
                         placeholder="Search branch name..." />
                 </div>
@@ -53,47 +54,57 @@
                     Pelajari tentang tata cara berbisnis, keuntungan, dan modal yang perlu dikeluarkan.</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-screen-lg mx-auto">
-                <!-- Card 1 -->
-                @foreach ($lowongan as $lowongans)
-                    <a href="/detailLowonganBisnis/{{ $lowongans->id }}" class="block">
-                        <div class="bg-white border rounded-lg shadow-md p-4 relative">
-                            <div class="flex justify-between items-start">
-                                <h3 class="text-lg font-semibold">{{ $lowongans->nama_lowongan }}</h3>
-                                <span class="text-blue-600 font-semibold">Rp
-                                    {{ number_format($lowongans->modal_usaha, 0, ',', '.') }}</span>
-                            </div>
-                            <div class="mt-2 flex flex-wrap gap-2">
-                                @forelse ($lowongans->tags as $no=>$tag)
-                                    @if ($no == 0)
-                                        <span
-                                            class="bg-yellow-100 text-yellow-700 px-2 py-1 rounded text-sm">{{ $tag->nama_tag }}</span>
-                                    @elseif ($no < 3)
-                                    <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-sm">{{ $tag->nama_tag }}</span>
-                                    @elseif ($no == 4)
-                                    <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-sm">{{ $tag->nama_tag }}...</span>
-                                    @endif
-                                @empty
-                                @endforelse
-                            </div>
-                            <div class="mt-4 flex items-center">
-                                @if ($lowongans->perusahaan)
-                                    <img src="{{ asset('storage/' . $lowongans->perusahaan->foto_perusahaan) }}"
-                                        alt="Company Logo" class="h-10 w-10 mr-2">
-                                @else
-                                    <img src="default-logo.png" alt="Company Logo" class="h-10 w-10 mr-2">
-                                @endif
-                                <div>
-                                    <p class="text-blue-600 font-medium">{{ $lowongans->perusahaan->nama_perusahaan }}
-                                    </p>
-                                    <p class="text-gray-500 text-sm">{{ strtolower($lowongans->kelurahan) }},{{ strtolower($lowongans->kecamatan) }},{{ strtolower($lowongans->kota) }},{{ strtolower($lowongans->provinsi) }}</p>
+            <!-- Card 1 -->
+            @foreach ($lowongan as $lowongans)
+                @if ($results->isEmpty())
+                    <p class="mb-40 text-center">Tidak ada hasil yang ditemukan. <a href="/lowonganBisnis" class="text-blue-600 hover:text-blue-400">Kembali Ke Lowongan</a></p>
+                @else
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-screen-lg mx-auto">
+                        <a href="/detailLowonganBisnis/{{ $lowongans->id }}" class="block">
+                            <div class="bg-white border rounded-lg shadow-md p-4 relative">
+                                <div class="flex justify-between items-start">
+                                    <h3 class="text-lg font-semibold">{{ $lowongans->nama_lowongan }}</h3>
+                                    <span class="text-blue-600 font-semibold">Rp
+                                        {{ number_format($lowongans->modal_usaha, 0, ',', '.') }}</span>
                                 </div>
+                                <div class="mt-2 flex flex-wrap gap-2">
+                                    @forelse ($lowongans->tags as $no=>$tag)
+                                        @if ($no == 0)
+                                            <span
+                                                class="bg-yellow-100 text-yellow-700 px-2 py-1 rounded text-sm">{{ $tag->nama_tag }}</span>
+                                        @elseif ($no < 3)
+                                            <span
+                                                class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-sm">{{ $tag->nama_tag }}</span>
+                                        @elseif ($no == 4)
+                                            <span
+                                                class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-sm">{{ $tag->nama_tag }}...</span>
+                                        @endif
+                                    @empty
+                                    @endforelse
+                                </div>
+                                <div class="mt-4 flex items-center">
+                                    @if ($lowongans->perusahaan)
+                                        <img src="{{ asset('storage/' . $lowongans->perusahaan->foto_perusahaan) }}"
+                                            alt="Company Logo" class="h-10 w-10 mr-2">
+                                    @else
+                                        <img src="default-logo.png" alt="Company Logo" class="h-10 w-10 mr-2">
+                                    @endif
+                                    <div>
+                                        <p class="text-blue-600 font-medium">
+                                            {{ $lowongans->perusahaan->nama_perusahaan }}
+                                        </p>
+                                        <p class="text-gray-500 text-sm">
+                                            {{ strtolower($lowongans->kelurahan) }},{{ strtolower($lowongans->kecamatan) }},{{ strtolower($lowongans->kota) }},{{ strtolower($lowongans->provinsi) }}
+                                        </p>
+                                    </div>
+                                </div>
+                                <p class="text-gray-400 text-xs mt-4">{{ $lowongans->created_at->diffForHumans() }}</p>
                             </div>
-                            <p class="text-gray-400 text-xs mt-4">{{ $lowongans->created_at->diffForHumans() }}</p>
-                        </div>
-                    </a>
-                @endforeach
-            </div>
+                        </a>
+                    </div>
+                @endif
+            @endforeach
+            {{ $results->links() }}
         </div>
     </x-slot:content>
 </x-layout>

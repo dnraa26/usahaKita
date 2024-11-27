@@ -12,13 +12,19 @@ use Illuminate\View\View;
 
 class PerusahaanController extends Controller
 {
-    public function index(): View
+    public function index(Request $request): View
     {
+        $query = $request->input('query');
+        $results = Perusahaan::where('nama_perusahaan', 'LIKE', "%{$query}%")
+            ->orWhere('provinsi', 'LIKE', "%{$query}%")
+            ->paginate(10);
+
         $perusahaan = Perusahaan::with(['lowongan' => function ($query) {
             $query->select('perusahaan_id', DB::raw('SUM(jumlah_lowongan) as total_lowongan'))
                 ->groupBy('perusahaan_id');
         }])->paginate(10);
-        return view('perusahaan', compact('perusahaan'));
+
+        return view('perusahaan', compact('perusahaan','query','results'));
     }
 
     public function store(Request $request)

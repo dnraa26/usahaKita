@@ -9,9 +9,8 @@ use App\Http\Controllers\LowonganController;
 use App\Http\Controllers\pickRoleController;
 use App\Http\Controllers\PerusahaanController;
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/searchLowongan', [LowonganController::class, 'index'])->name('search.lowongan');
+Route::get('/searchPerusahaan', [PerusahaanController::class, 'index'])->name('search.perusahaan');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
