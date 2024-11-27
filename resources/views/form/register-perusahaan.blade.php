@@ -6,7 +6,7 @@
 
     <x-slot:content>
         <div
-            class="min-h-screen flex justify-center bg-center py-12 px-4 sm:px-6 lg:px-8 bg-gray-500 bg-no-repeat bg-cover relative items-center">
+            class="min-h-screen flex justify-center bg-center py-12 px-4 sm:px-6 lg:px-8  bg-no-repeat bg-cover relative items-center">
             <div class="absolute bg-white opacity-60 inset-0 z-0"></div>
             <div class="max-w-6xl w-full space-y-8 p-10 bg-white rounded-xl shadow-lg z-10">
                 <div class="grid gap-8 grid-cols-1">
