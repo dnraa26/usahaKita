@@ -15,6 +15,11 @@
                                 Tambah Lowongan Bisnis
                             </li>
                         </a>
+                        <a href="/tutupBukaLowonganBisnis" class="text-gray-600">
+                            <li
+                                class="p-4 {{ request()->is('tutupBukaLowonganBisnis') ? 'bg-gray-200' : 'text-gray-600' }} hover:bg-gray-200">
+                                Manage Lowongan Bisnis</li>
+                        </a>
                         <a href="/manageProfilPerusahaanBusinesman" class="text-gray-600">
                             <li
                                 class="p-4 {{ request()->is('manageProfilPerusahaanBusinesman') ? 'bg-gray-200' : 'text-gray-600' }} hover:bg-gray-200">

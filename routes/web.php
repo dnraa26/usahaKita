@@ -77,6 +77,10 @@ Route::get('/editLowonganBisnis', function () {
     return view('form.editLowonganBisnis');
 });
 
+Route::get('/tutupBukaLowonganBisnis', function () {
+    return view('tutupBukaLowonganBisnis');
+});
+
 Route::get('/profilePerusahaan/{id}',[PerusahaanController::class,'profilPerusahaan']);
 
 Route::get('/tambahLowonganBisnis', function () {
