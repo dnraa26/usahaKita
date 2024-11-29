@@ -14,17 +14,21 @@ class PerusahaanController extends Controller
 {
     public function index(Request $request): View
     {
-        $query = $request->input('query');
-        $results = Perusahaan::where('nama_perusahaan', 'LIKE', "%{$query}%")
-            ->orWhere('provinsi', 'LIKE', "%{$query}%")
-            ->paginate(10);
+        if ($request->input('query')) {
+            $query = $request->input('query');
+            $perusahaan = Perusahaan::where('nama_perusahaan', 'LIKE', "%{$query}%")
+                ->orWhere('provinsi', 'LIKE', "%{$query}%")
+                // ->where('status', 'buka')
+                ->paginate(10);
+        } else {
+            $perusahaan = Perusahaan::with(['lowongan' => function ($query) {
+                $query->select('perusahaan_id', DB::raw('SUM(jumlah_lowongan) as total_lowongan'))
+                    ->groupBy('perusahaan_id');
+            }])->paginate(10);
+        }
 
-        $perusahaan = Perusahaan::with(['lowongan' => function ($query) {
-            $query->select('perusahaan_id', DB::raw('SUM(jumlah_lowongan) as total_lowongan'))
-                ->groupBy('perusahaan_id');
-        }])->paginate(10);
 
-        return view('perusahaan', compact('perusahaan','query','results'));
+        return view('perusahaan', compact('perusahaan'));
     }
 
     public function store(Request $request)
@@ -73,35 +77,8 @@ class PerusahaanController extends Controller
 
     public function profilPerusahaan($id)
     {
-        $lowongan = Lowongan::all();
+        $lowongan = Lowongan::where('perusahaan_id', $id)->get();
         $data = Perusahaan::find($id);
         return view('profilePerusahaanPartner', compact('data', 'lowongan'));
-    }
-
-    public function getProvinces()
-    {
-        $response = Http::get('https://www.emsifa.com/api-wilayah-indonesia/api/provinces.json');
-        return response()->json($response->json());
-    }
-
-    // Mendapatkan data kabupaten/kota berdasarkan ID provinsi
-    public function getRegencies($id)
-    {
-        $response = Http::get("https://www.emsifa.com/api-wilayah-indonesia/api/regencies/{$id}.json");
-        return response()->json($response->json());
-    }
-
-    // Mendapatkan data kecamatan berdasarkan ID kabupaten/kota
-    public function getDistricts($id)
-    {
-        $response = Http::get("https://www.emsifa.com/api-wilayah-indonesia/api/districts/{$id}.json");
-        return response()->json($response->json());
-    }
-
-    // Mendapatkan data kelurahan/desa berdasarkan ID kecamatan
-    public function getVillages($id)
-    {
-        $response = Http::get("https://www.emsifa.com/api-wilayah-indonesia/api/villages/{$id}.json");
-        return response()->json($response->json());
     }
 }

@@ -28,7 +28,7 @@
         </div>
 
         <!-- Contoh Hasil Pencarian -->
-        @if ($results->isEmpty())
+        @if ($perusahaan->isEmpty())
             <p class="mb-40 text-center justify-center">Tidak ada hasil yang ditemukan. <a href="/perusahaan"
                     class="text-blue-600 hover:text-blue-400">Kembali Ke Perusahaan</a></p>
         @else

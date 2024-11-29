@@ -16,7 +16,7 @@
                                 hover:bg-gray-200">
                                 Tambah Lowongan Bisnis</li>
                         </a>
-                        <a href="/tutupBukaLowonganBisnis" class="text-gray-600">
+                        <a href="/manageLowongan" class="text-gray-600">
                             <li class="p-4 hover:bg-gray-200">Manage Lowongan Bisnis</li>
                         </a>
                         <a href="/manageProfilPerusahaanBusinesman" class="text-gray-600">
@@ -261,7 +261,7 @@
                                 </div>
                                 <div>
                                     <label class="block text-gray-700">Benefit</label>
-                                    <textarea name="benefit" rows="2" class="w-full p-2 border rounded">@isset($benefitArray)@foreach ($benefitArray as $requirement){{ $requirement }},@endforeach@else Tidak ada data yang tersedia.@endisset</textarea>
+                                    <textarea name="benefit" rows="2" class="w-full p-2 border rounded">@isset($benefitArray)@foreach ($benefitArray as $requirement){{ $requirement }},@endforeach @else Tidak ada data yang tersedia.@endisset</textarea>
                                 </div>
                                 <div class="md:flex md:row md:space-x-4 w-full text-xs">
                                     <div class="w-full flex flex-col mb-3">

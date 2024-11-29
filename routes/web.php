@@ -80,9 +80,12 @@ Route::get('/editLowonganBisnis', function () {
     return view('form.editLowonganBisnis');
 });
 
-Route::get('/tutupBukaLowonganBisnis', function () {
-    return view('tutupBukaLowonganBisnis');
-});
+// Route::get('/manageLowongan', function () {
+//     return view('tutupBukaLowonganBisnis');
+// });
+
+route::put('/updateLowonganStatus/{id}',[LowonganController::class,'updateLowonganStatus'])->name('updateLowonganStatus');
+route::get('/manageLowongan',[LowonganController::class,'manageLowongan']);
 
 Route::get('/profilePerusahaan/{id}',[PerusahaanController::class,'profilPerusahaan']);
 
@@ -95,7 +98,7 @@ Route::get('/tambahLowonganBisnis', function () {
 Route::get('/checkUser', [checkUserController::class, 'index'])->name('checkUser');
 // Route::get('/wilayah', [checkUserController::class, 'index']);
 // Route::post('/wilayah', [checkUserController::class, 'store']);
-Route::get('/api/provinces', [PerusahaanController::class, 'getProvinces']);
-Route::get('/api/regencies/{id}', [PerusahaanController::class, 'getRegencies']);
-Route::get('/api/districts/{id}', [PerusahaanController::class, 'getDistricts']);
-Route::get('/api/villages/{id}', [PerusahaanController::class, 'getVillages']);
+Route::get('/api/provinces', [LokasiController::class, 'getProvinces']);
+Route::get('/api/regencies/{id}', [LokasiController::class, 'getRegencies']);
+Route::get('/api/districts/{id}', [LokasiController::class, 'getDistricts']);
+Route::get('/api/villages/{id}', [LokasiController::class, 'getVillages']);

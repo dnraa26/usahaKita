@@ -17,17 +17,24 @@ class LowonganController extends Controller
      * Display a listing of the resource.
      */
     public function index(Request $request)
-    {
-        Carbon::setLocale('id');
-
+{
+    Carbon::setLocale('id');
+    if ($request->input('query')) {
         $query = $request->input('query');
-        $results = Lowongan::where('nama_lowongan', 'LIKE', "%{$query}%")
+        $lowongan = Lowongan::where('nama_lowongan', 'LIKE', "%{$query}%")
             ->orWhere('provinsi', 'LIKE', "%{$query}%")
+            ->where('status', 'buka')
             ->paginate(10);
-
-        $lowongan = Lowongan::with('tags', 'perusahaan')->orderBy('id', 'asc')->latest()->paginate(10);
-        return view('lowonganBisnis', compact('lowongan', 'query', 'results'));
+    } else {
+        $lowongan = Lowongan::where('status', 'buka')
+            ->with('tags', 'perusahaan')
+            ->orderBy('id', 'asc')
+            ->latest()
+            ->paginate(10);
     }
+    return view('lowonganBisnis', compact('lowongan'));
+}
+
 
     /**
      * Show the form for creating a new resource.
@@ -37,7 +44,7 @@ class LowonganController extends Controller
         $idPerusahaan = Perusahaan::where('user_id', Auth::id())->first()->id;
         $tag = TagSpesifikasi::all();
         $tableLowongan = Lowongan::where('perusahaan_id', '=', $idPerusahaan)->get();
-        
+
         // $tableLowongan = Lowongan::with('tags','perusahaan')->where('perusahaan_id',$idPerusahaan)->orderBy('id', 'asc');
         return view('dashboardBusinesman', compact('tableLowongan', 'tag'));
     }
@@ -128,6 +135,7 @@ class LowonganController extends Controller
             'tags' => 'required|array',
         ]);
 
+        //requirement
         $requirements = $request->input('requirement');
         $requirementsArray = explode(",", $requirements);
         $requirementsArray = array_map('trim', $requirementsArray);
@@ -139,15 +147,21 @@ class LowonganController extends Controller
         $benfitArray = array_filter($benfitArray, fn($value) => !empty($value));
 
         $Lowongan = Lowongan::findOrFail($id);
-        TagSpesifikasiLowongan::where('lowongan_id',$id)->delete();
-        
+        TagSpesifikasiLowongan::where('lowongan_id', $id)->delete();
+
         $Lowongan->update($request->only([
-            'nama_lowongan', 'jumlah', 'modal_usaha', 'provinsi', 'kota', 'kecamatan', 'kelurahan'
+            'nama_lowongan',
+            'jumlah',
+            'modal_usaha',
+            'provinsi',
+            'kota',
+            'kecamatan',
+            'kelurahan'
         ]) + [
             'requirement' => json_encode($requirementsArray),
             'benefit' => $request->benefit ? json_encode($benfitArray) : null,
         ]);
-    
+
         if ($request->has('tags')) {
             foreach ($request->tags as $tagId) {
                 TagSpesifikasiLowongan::create([
@@ -156,11 +170,9 @@ class LowonganController extends Controller
                 ]);
             }
         }
-    
+
         // Redirect atau response sesuai dengan kebutuhan
         return redirect()->route('lowongan.create')->with('success', 'Lowongan berhasil diperbarui!');
-
-        
     }
 
     /**
@@ -168,8 +180,35 @@ class LowonganController extends Controller
      */
     public function destroy(string $id)
     {
-        TagSpesifikasiLowongan::where('lowongan_id',$id)->delete();
+        TagSpesifikasiLowongan::where('lowongan_id', $id)->delete();
         Lowongan::findOrFail($id)->delete();
         return redirect()->route('lowongan.create')->with('success', 'Lowongan berhasil dihapus');
+    }
+
+    public function manageLowongan()
+    {
+        $idUser = Auth::id();
+        $dataLowongan = Lowongan::whereHas('perusahaan', function ($query) use ($idUser) {
+            $query->where('user_id', $idUser);
+        })->get();
+
+        return view('tutupBukaLowonganBisnis', compact('dataLowongan'));
+    }
+
+    public function updateLowonganStatus(Request $request,$id)
+    {
+        
+        
+        $lowongan = Lowongan::findOrFail($id);
+        if ($request->input('tutup')) {
+            $lowongan->status = 'tutup';
+        }else if ($request->input('buka')) {
+            $lowongan->status = 'buka';
+        }
+
+        // dd($lowongan->status);
+        $lowongan->save();
+
+        return redirect('/manageLowongan');
     }
 }

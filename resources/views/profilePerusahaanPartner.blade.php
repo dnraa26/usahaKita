@@ -54,7 +54,7 @@
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                             <!-- Card Lowongan -->
                             @foreach ($lowongan as $lowongans)
-                            <a href="/e/{{ $lowongans->id }}">
+                            <a href="/detailLowonganBisnis/{{ $lowongans->id }}">
                                 <div class="relative bg-white p-4 rounded-lg shadow-lg flex flex-col items-center">
                                     <img src="https://via.placeholder.com/100" alt="Danone Logo" class="w-16 h-16 mb-2">
                                     <h2 class="text-lg font-semibold">{{ $lowongans->nama_lowongan }}</h2>

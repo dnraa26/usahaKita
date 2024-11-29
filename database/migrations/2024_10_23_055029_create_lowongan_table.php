@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('kota');
             $table->string('kecamatan');
             $table->string('kelurahan');
-            $table->enum('status',['pendding','ditolak','diterima'])->default('pendding');
+            $table->enum('status',['buka','tutup'])->default('buka');
             $table->timestamps();
             
         });

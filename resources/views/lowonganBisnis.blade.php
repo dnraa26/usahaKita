@@ -55,7 +55,7 @@
             </div>
 
             <!-- Card 1 -->
-            @if ($results->isEmpty())
+            @if ($lowongan->isEmpty())
                 <p class="mb-40 text-center">Tidak ada hasil yang ditemukan. <a href="/lowonganBisnis"
                         class="text-blue-600 hover:text-blue-400">Kembali Ke Lowongan</a></p>
             @else
@@ -105,7 +105,7 @@
                     @endforeach
                 </div>
             @endif
-            {{ $results->links() }}
+            {{ $lowongan->links() }}
         </div>
     </x-slot:content>
 </x-layout>
