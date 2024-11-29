@@ -150,8 +150,8 @@
                                 <tr class="bg-gray-100">
                                     <th class="px-6 py-3 border-b">Judul</th>
                                     <th class="px-6 py-3 border-b">Jumlah</th>
-                                    <th class="px-6 py-3 border-b">Requirement</th>
-                                    <th class="px-6 py-3 border-b">Benefit</th>
+                                    {{-- <th class="px-6 py-3 border-b">Requirement</th>
+                                    <th class="px-6 py-3 border-b">Benefit</th> --}}
                                     <th class="px-6 py-3 border-b">Lokasi</th>
                                     <th class="px-6 py-3 border-b">tag</th>
                                     <th class="px-6 py-3 border-b text-center">Aksi</th>
@@ -169,7 +169,7 @@
                                         </td>
                                         <td class="border px-4 py-2 text-center">
                                             {{ $lowongan->jumlah_lowongan }}</td>
-                                        <td class="border px-4 py-2">
+                                        {{-- <td class="border px-4 py-2">
                                             @foreach ($requirementsArray as $requirement)
                                                 <li> {{ $requirement }} </li>
                                             @endforeach
@@ -178,7 +178,7 @@
                                             @foreach ($benefitArray as $requirement)
                                                 <li> {{ $requirement }} </li>
                                             @endforeach
-                                        </td>
+                                        </td> --}}
                                         <td class="px-6 py-4 border-b">
                                             {{ $lowongan->provinsi }},{{ $lowongan->kecamatan }},{{ $lowongan->kelurahan }},{{ $lowongan->kelurahan }}
                                         </td>
@@ -257,23 +257,11 @@
                                 </div>
                                 <div>
                                     <label class="block text-gray-700">Requirement</label>
-                                    <textarea name="requirement" rows="3" class="w-full p-2 border rounded">
-@isset($requirementsArray)@foreach ($requirementsArray as $requirement)
-{{ $requirement }},
-@endforeach
-@else
-Tidak ada data yang tersedia.@endisset
-</textarea>
+                                    <textarea name="requirement" rows="3" class="w-full p-2 border rounded">@isset($requirementsArray)@foreach ($requirementsArray as $requirement){{ $requirement }},@endforeach @else Tidak ada data yang tersedia.@endisset</textarea>
                                 </div>
                                 <div>
                                     <label class="block text-gray-700">Benefit</label>
-                                    <textarea name="benefit" rows="2" class="w-full p-2 border rounded">
-                                        @isset($benefitArray)@foreach ($benefitArray as $requirement)
-                                        {{ $requirement }},
-                                        @endforeach
-                                        @else
-                                        Tidak ada data yang tersedia.@endisset
-                                        </textarea>
+                                    <textarea name="benefit" rows="2" class="w-full p-2 border rounded">@isset($benefitArray)@foreach ($benefitArray as $requirement){{ $requirement }},@endforeach@else Tidak ada data yang tersedia.@endisset</textarea>
                                 </div>
                                 <div class="md:flex md:row md:space-x-4 w-full text-xs">
                                     <div class="w-full flex flex-col mb-3">
