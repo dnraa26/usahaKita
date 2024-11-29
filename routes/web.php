@@ -92,3 +92,12 @@ Route::get('/tambahLowonganBisnis', function () {
 Route::get('/profile', function () {
     return view('profile');
 });
+
+Route::get('/wishlist', function () {
+    return view('wishlist');
+});
+
+Route::get('/verifikasiLowongan', function () {
+    return view('verifikasiLowongan');
+});
+

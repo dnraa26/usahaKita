@@ -26,6 +26,9 @@
                     <li><a href="/dashboardBusinesman"
                             class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 light:hover:bg-gray-600 light:text-gray-200 light:hover:text-white">Dashboard</a>
                     </li>
+                    <li><a href="/verifikasiLowongan"
+                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 light:hover:bg-gray-600 light:text-gray-200 light:hover:text-white">Aktivitas</a>
+                    </li>
                     <li><a href="#"
                             class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 light:hover:bg-gray-600 light:text-gray-200 light:hover:text-white">Settings</a>
                     </li>
@@ -33,15 +36,15 @@
                             class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 light:hover:bg-gray-600 light:text-gray-200 light:hover:text-white">Earnings</a>
                     </li>
                     @if (Auth::check())
-                    <li>
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
-                            <button type="submit"
-                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 light:hover:bg-gray-600 light:text-gray-200 light:hover:text-white w-full border-t-2 border-black mt-2">
-                                Sign out
-                            </button>
-                        </form>
-                    </li>
+                        <li>
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+                                <button type="submit"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 light:hover:bg-gray-600 light:text-gray-200 light:hover:text-white w-full border-t-2 border-black mt-2">
+                                    Sign out
+                                </button>
+                            </form>
+                        </li>
                     @endif
                 </ul>
             </div>

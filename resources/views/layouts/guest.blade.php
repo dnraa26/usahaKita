@@ -19,11 +19,9 @@
 <body class="font-sans text-gray-900 antialiased">
     <div class="min-h-screen flex justify-center items-center ">
 
-        <div class="w-screen h-screen bg-blue-500 " >
-
-
-
-        </div>
+       <div class="h-screen w-screen bg-blue-500 ">
+        <img src="img/bg_Login3.jpg" class="w-screen h-screen"  alt="">
+       </div>
 
 
         <div class="w-1/2 h-screen bg-white shadow-xl flex justify-center items-center">
