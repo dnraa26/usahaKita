@@ -9,7 +9,7 @@ class TagSpesifikasiLowongan extends Model
     protected $table = 'tagspesifikasi_lowongan';
     protected $fillable = [
         'lowongan_id',
-        'tag_spesifikasi_id'
+        'tag_id'
     ];
 
     public function lowongans()

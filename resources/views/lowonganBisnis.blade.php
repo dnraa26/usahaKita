@@ -55,11 +55,12 @@
             </div>
 
             <!-- Card 1 -->
-            @foreach ($lowongan as $lowongans)
-                @if ($results->isEmpty())
-                    <p class="mb-40 text-center">Tidak ada hasil yang ditemukan. <a href="/lowonganBisnis" class="text-blue-600 hover:text-blue-400">Kembali Ke Lowongan</a></p>
-                @else
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-screen-lg mx-auto">
+            @if ($results->isEmpty())
+                <p class="mb-40 text-center">Tidak ada hasil yang ditemukan. <a href="/lowonganBisnis"
+                        class="text-blue-600 hover:text-blue-400">Kembali Ke Lowongan</a></p>
+            @else
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-screen-lg mx-auto">
+                    @foreach ($lowongan as $lowongans)
                         <a href="/detailLowonganBisnis/{{ $lowongans->id }}" class="block">
                             <div class="bg-white border rounded-lg shadow-md p-4 relative">
                                 <div class="flex justify-between items-start">
@@ -101,9 +102,9 @@
                                 <p class="text-gray-400 text-xs mt-4">{{ $lowongans->created_at->diffForHumans() }}</p>
                             </div>
                         </a>
-                    </div>
-                @endif
-            @endforeach
+                    @endforeach
+                </div>
+            @endif
             {{ $results->links() }}
         </div>
     </x-slot:content>

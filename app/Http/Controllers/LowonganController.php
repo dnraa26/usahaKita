@@ -36,8 +36,9 @@ class LowonganController extends Controller
     {
         $idPerusahaan = Perusahaan::where('user_id', Auth::id())->first()->id;
         $tag = TagSpesifikasi::all();
-        // $tableLowongan = Lowongan::with('tags','perusahaan')->where('perusahaan_id',$idPerusahaan)->orderBy('id', 'asc');
         $tableLowongan = Lowongan::where('perusahaan_id', '=', $idPerusahaan)->get();
+        
+        // $tableLowongan = Lowongan::with('tags','perusahaan')->where('perusahaan_id',$idPerusahaan)->orderBy('id', 'asc');
         return view('dashboardBusinesman', compact('tableLowongan', 'tag'));
     }
 
@@ -114,7 +115,52 @@ class LowonganController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'nama_lowongan' => 'required|string|max:255',
+            'jumlah' => 'required|integer|min:1',
+            'modal_usaha' => 'required|integer|min:1',
+            'requirement' => 'required|string|max:1000',
+            'benefit' => 'nullable|string|max:500',
+            'provinsi' => ['required', 'string', 'max:255'],
+            'kota' => ['required', 'string', 'max:255'],
+            'kecamatan' => ['required', 'string', 'max:255'],
+            'kelurahan' => ['required', 'string', 'max:255'],
+            'tags' => 'required|array',
+        ]);
+
+        $requirements = $request->input('requirement');
+        $requirementsArray = explode(",", $requirements);
+        $requirementsArray = array_map('trim', $requirementsArray);
+        $requirementsArray = array_filter($requirementsArray, fn($value) => !empty($value));
+        //benefit
+        $benefit = $request->input('benefit');
+        $benfitArray = explode(",", $benefit);
+        $benfitArray = array_map('trim', $benfitArray);
+        $benfitArray = array_filter($benfitArray, fn($value) => !empty($value));
+
+        $Lowongan = Lowongan::findOrFail($id);
+        TagSpesifikasiLowongan::where('lowongan_id',$id)->delete();
+        
+        $Lowongan->update($request->only([
+            'nama_lowongan', 'jumlah', 'modal_usaha', 'provinsi', 'kota', 'kecamatan', 'kelurahan'
+        ]) + [
+            'requirement' => json_encode($requirementsArray),
+            'benefit' => $request->benefit ? json_encode($benfitArray) : null,
+        ]);
+    
+        if ($request->has('tags')) {
+            foreach ($request->tags as $tagId) {
+                TagSpesifikasiLowongan::create([
+                    'lowongan_id' => $Lowongan->id,
+                    'tag_id' => $tagId
+                ]);
+            }
+        }
+    
+        // Redirect atau response sesuai dengan kebutuhan
+        return redirect()->route('lowongan.create')->with('success', 'Lowongan berhasil diperbarui!');
+
+        
     }
 
     /**
@@ -122,6 +168,8 @@ class LowonganController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        TagSpesifikasiLowongan::where('lowongan_id',$id)->delete();
+        Lowongan::findOrFail($id)->delete();
+        return redirect()->route('lowongan.create')->with('success', 'Lowongan berhasil dihapus');
     }
 }

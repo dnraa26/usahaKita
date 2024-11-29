@@ -16,11 +16,11 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+// Route::middleware('auth')->group(function () {
+//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+// });
 
 Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 Route::get('/pilihRole', [pickRoleController::class, 'index'])->name('pilihRole');
@@ -28,6 +28,9 @@ Route::post('/pilihRole', [pickRoleController::class, 'store'])->name('pickRole'
 
 Route::get('/', function () {
     return view('homePage');
+});
+Route::get('/profile', function () {
+    return view('profile');
 });
 
 Route::get('/lowonganBisnis', function () {
@@ -43,6 +46,7 @@ Route::get('/lowonganBisnis',[LowonganController::class, 'index'])->name('lowong
 Route::get('/dashboardBusinesman',[LowonganController::class, 'create'])->name('lowongan.create');
 Route::put('/dashboardBusinesman/{id}',[LowonganController::class, 'update'])->name('lowongan.update');
 Route::post('/tambahLowongan',[LowonganController::class, 'store'])->name('tambah.lowongan');
+Route::delete('/deleteLowongan/{id}',[LowonganController::class, 'destroy'])->name('lowongan.destroy');
 
 Route::get('/manageProfilPerusahaanBusinesman', function () {
     return view('manageProfilPerusahaanBusinesman');
