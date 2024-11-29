@@ -101,3 +101,8 @@ Route::get('/verifikasiLowongan', function () {
     return view('verifikasiLowongan');
 });
 
+Route::get('/listBisnisPartner', function () {
+    return view('listBisnisPartner');
+});
+
+
