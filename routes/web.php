@@ -100,3 +100,20 @@ Route::get('/api/provinces', [LokasiController::class, 'getProvinces']);
 Route::get('/api/regencies/{id}', [LokasiController::class, 'getRegencies']);
 Route::get('/api/districts/{id}', [LokasiController::class, 'getDistricts']);
 Route::get('/api/villages/{id}', [LokasiController::class, 'getVillages']);
+Route::get('/wishlist', function () {
+    return view('wishlist');
+});
+
+Route::get('/verifikasiLowongan', function () {
+    return view('verifikasiLowongan');
+});
+
+Route::get('/listBisnisPartner', function () {
+    return view('listBisnisPartner');
+});
+
+Route::get('/settingAkun', function () {
+    return view('settingAkun');
+});
+
+

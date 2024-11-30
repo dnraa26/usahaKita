@@ -43,7 +43,7 @@
                         </div>
                     </div>
 
-                    <div class="flex-1 p-5  " x-data="{ openEditProfilePerusahaan: false }">
+                    <div class="flex-1 p-5" x-data="{ openEditProfilePerusahaan: false }">
                         <!-- Button to Open Modal Perusahaan -->
                         <div class="flex justify-end md:mb-[30px]">
                             <button @click="openEditProfilePerusahaan = true"
