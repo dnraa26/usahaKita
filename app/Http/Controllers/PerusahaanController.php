@@ -14,21 +14,37 @@ class PerusahaanController extends Controller
 {
     public function index(Request $request): View
     {
-        if ($request->input('query')) {
-            $query = $request->input('query');
-            $perusahaan = Perusahaan::where('nama_perusahaan', 'LIKE', "%{$query}%")
-                ->orWhere('provinsi', 'LIKE', "%{$query}%")
-                // ->where('status', 'buka')
+        $query = $request->input('query');
+
+        if ($query) {
+            $perusahaan = Perusahaan::where('perusahaan.nama_perusahaan', 'LIKE', "%{$query}%") // Menambahkan alias 'perusahaan.'
+                ->orWhere('perusahaan.provinsi', 'LIKE', "%{$query}%") // Menambahkan alias 'perusahaan.'
+                ->leftJoin('lowongan', 'perusahaan.id', '=', 'lowongan.perusahaan_id')
+                ->select('perusahaan.id', 'perusahaan.nama_perusahaan', 'perusahaan.provinsi', DB::raw('SUM(lowongan.jumlah_lowongan) as total_lowongan'))
+                ->groupBy('perusahaan.id', 'perusahaan.nama_perusahaan', 'perusahaan.provinsi')
                 ->paginate(10);
+
+                $count = Perusahaan::leftJoin('lowongan', 'perusahaan.id', '=', 'lowongan.perusahaan_id')
+                ->select(
+                    'perusahaan.foto_perusahaan', 
+                    DB::raw('SUM(lowongan.jumlah_lowongan) as total_lowongan')
+                )
+                ->where('perusahaan.nama_perusahaan', 'LIKE', "%{$query}%")
+                ->orWhere('perusahaan.provinsi', 'LIKE', "%{$query}%")
+                ->groupBy('perusahaan.foto_perusahaan') // Tambahkan GROUP BY untuk kolom non-agregat
+                ->first();
+            
+            // dd($count->foto_perusahaan);
         } else {
             $perusahaan = Perusahaan::with(['lowongan' => function ($query) {
                 $query->select('perusahaan_id', DB::raw('SUM(jumlah_lowongan) as total_lowongan'))
                     ->groupBy('perusahaan_id');
             }])->paginate(10);
+
+            $count = 0;
         }
 
-
-        return view('perusahaan', compact('perusahaan'));
+        return view('perusahaan', compact('perusahaan', 'count', 'query'));
     }
 
     public function store(Request $request)
@@ -75,10 +91,23 @@ class PerusahaanController extends Controller
         return redirect(route('perusahaan', absolute: false));
     }
 
+    public function editProfil(Request $request,$id)
+    {
+
+        return view('manageProfilPerusahaanBusinesman');
+    }
+
     public function profilPerusahaan($id)
     {
         $lowongan = Lowongan::where('perusahaan_id', $id)->get();
         $data = Perusahaan::find($id);
         return view('profilePerusahaanPartner', compact('data', 'lowongan'));
+    }
+
+    public function manageProfil(){
+        $idUser = Auth::id();
+        $dataPerusahaan = Perusahaan::with('kategori_bisnis','lowongan')->find($idUser);
+        // dd($dataPerusahaan);
+        return view('manageProfilPerusahaanBusinesman',compact('dataPerusahaan'));
     }
 }

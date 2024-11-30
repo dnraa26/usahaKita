@@ -48,10 +48,8 @@ Route::put('/dashboardBusinesman/{id}',[LowonganController::class, 'update'])->n
 Route::post('/tambahLowongan',[LowonganController::class, 'store'])->name('tambah.lowongan');
 Route::delete('/deleteLowongan/{id}',[LowonganController::class, 'destroy'])->name('lowongan.destroy');
 
-Route::get('/manageProfilPerusahaanBusinesman', function () {
-    return view('manageProfilPerusahaanBusinesman');
-});
-
+Route::get('/manageProfilPerusahaanBusinesman',[PerusahaanController::class, 'manageProfil'])->name('manageProfile');
+Route::put('/editProfilPerusahaanBusinesman',[PerusahaanController::class, 'editProfil'])->name('editProfile');
 Route::get('/form', function () {
     return view('form.register-perusahaan');
 });

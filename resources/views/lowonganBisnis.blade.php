@@ -95,7 +95,13 @@
                                             {{ $lowongans->perusahaan->nama_perusahaan }}
                                         </p>
                                         <p class="text-gray-500 text-sm">
-                                            {{ strtolower($lowongans->kelurahan) }},{{ strtolower($lowongans->kecamatan) }},{{ strtolower($lowongans->kota) }},{{ strtolower($lowongans->provinsi) }}
+                                            {{-- @if (str_word_count(strtolower("{$lowongans->kelurahan}, {$lowongans->kecamatan}, {$lowongans->kota}, {$lowongans->provinsi}")) > 8)
+                                                {{ substr(strtolower("{$lowongans->provinsi}, {$lowongans->kota}, {$lowongans->kecamatan}, {$lowongans->kelurahan}"), 0, 200) . ' [..]' }}
+                                            @else
+                                            {{ strtolower($lowongans->provinsi) }},{{ strtolower($lowongans->kota) }},{{ strtolower($lowongans->kecamatan) }}
+                                            @endif --}}
+
+                                            {{ ucwords(strtolower($lowongans->provinsi)) }}
                                         </p>
                                     </div>
                                 </div>

@@ -1,47 +1,66 @@
 <nav class="fixed top-0 left-0 w-full bg-white border-b border-gray-200 z-50 light:bg-gray-900">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
-            <img src=" {{ asset('img/logo_Usahakita.png') }}" style="width: 150px;height:130px" class="h-10 absolute"  alt="Logo" />
+            <img src=" {{ asset('img/logo_Usahakita.png') }}" style="width: 150px;height:130px" class="h-10 absolute"
+                alt="Logo" />
             {{-- <span class="self-center text-2xl font-semibold whitespace-nowrap light:text-white">Flowbite</span> --}}
         </a>
         <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
             <button type="button"
-                class="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 light:focus:ring-gray-600"
+                class="flex text-sm bg-gray-300 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 light:focus:ring-gray-600"
                 id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown"
                 data-dropdown-placement="bottom">
                 <span class="sr-only">Open user menu</span>
-                <img class="w-8 h-8 rounded-full" src="" alt="user photo">
+                <img class="w-10 h-10 rounded-full" src="{{ asset('img/defaultProfil.png') }}" alt="user photo">
             </button>
             <!-- Dropdown menu -->
             <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow light:bg-gray-700 light:divide-gray-600"
                 id="user-dropdown">
                 <div class="px-4 py-3">
-                    <span class="block text-sm text-gray-900 light:text-white">Bonnie Green</span>
-                    <span class="block text-sm text-gray-500 truncate light:text-gray-400">name@flowbite.com</span>
+                    @if (Auth::check())
+                        <span
+                            class="block text-sm text-gray-900 light:text-white text-center">{{ Auth::user()->nama_depan }}</span>
+                        <span
+                            class="block text-sm text-gray-500 truncate light:text-gray-400">{{ Auth::user()->email }}</span>
+                    @else
+                        <span class="block text-sm text-gray-900 light:text-white">Hallo Guest</span>
+                        <span class="block text-sm text-gray-500 truncate light:text-gray-400">guest@gmail.com</span>
+                    @endif
                 </div>
                 <ul class="py-2" aria-labelledby="user-menu-button">
-                    <li><a href="/profile"
-                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 light:hover:bg-gray-600 light:text-gray-200 light:hover:text-white">Profile</a>
-                    </li>
-                    <li><a href="/dashboardBusinesman"
-                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 light:hover:bg-gray-600 light:text-gray-200 light:hover:text-white">Dashboard</a>
-                    </li>
-                    <li><a href="#"
-                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 light:hover:bg-gray-600 light:text-gray-200 light:hover:text-white">Settings</a>
-                    </li>
-                    <li><a href="#"
-                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 light:hover:bg-gray-600 light:text-gray-200 light:hover:text-white">Earnings</a>
-                    </li>
                     @if (Auth::check())
-                    <li>
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
-                            <button type="submit"
-                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 light:hover:bg-gray-600 light:text-gray-200 light:hover:text-white w-full border-t-2 border-black mt-2">
-                                Sign out
-                            </button>
-                        </form>
-                    </li>
+                        <li><a href="/profile"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 light:hover:bg-gray-600 light:text-gray-200 light:hover:text-white">Profile</a>
+                        </li>
+                    @endif
+                    @if (Auth::check() && Auth::user()->role == 2)
+                        <li><a href="/dashboardBusinesman"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 light:hover:bg-gray-600 light:text-gray-200 light:hover:text-white">Dashboard</a>
+                        </li>
+                    @endif
+                    @if (Auth::check())
+                        <li><a href="#"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 light:hover:bg-gray-600 light:text-gray-200 light:hover:text-white">Settings</a>
+                        </li>
+                    @endif
+                    @if (!Auth::check())
+                        <li><a href="/login"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 light:hover:bg-gray-600 light:text-gray-200 light:hover:text-white text-center">Login</a>
+                        </li>
+                        <li><a href="/register"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 light:hover:bg-gray-600 light:text-gray-200 light:hover:text-white text-center">Register</a>
+                        </li>
+                    @endif
+                    @if (Auth::check())
+                        <li>
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+                                <button type="submit"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 light:hover:bg-gray-600 light:text-gray-200 light:hover:text-white w-full border-t-2 border-gray-100 mt-2">
+                                    Sign out
+                                </button>
+                            </form>
+                        </li>
                     @endif
                 </ul>
             </div>
