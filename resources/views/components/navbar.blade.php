@@ -39,10 +39,12 @@
                         </li>
                     @endif
                     @if (Auth::check())
-                        <li><a href="/verifikasiLowongan"
-                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 light:hover:bg-gray-600 light:text-gray-200 light:hover:text-white">Aktivitas</a>
-                    </li>
-                    <li><a href="settingAkun"
+                        @if (Auth::user()->role == 3)
+                            <li><a href="/verifikasiLowongan"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 light:hover:bg-gray-600 light:text-gray-200 light:hover:text-white">Aktivitas</a>
+                        @endif
+                        </li>
+                        <li><a href="settingAkun"
                                 class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 light:hover:bg-gray-600 light:text-gray-200 light:hover:text-white">Settings</a>
                         </li>
                     @endif
