@@ -13,7 +13,7 @@
                     Perusahaan yang bergabung
                 </h1>
                 <!-- Subheading -->
-                <p class="mt-2 text-lg mt-4 text-white">
+                <p class="mt-3 text-lg text-white">
                     Manfaatkan kesempatan ini dengan baik karena perusahaan telah mempercayaimu
                 </p>
             </div>

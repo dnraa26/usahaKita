@@ -38,7 +38,7 @@
                         </div>
                     </div>
 
-                    <div class="flex-1 p-5  " x-data="{ openEditProfilePerusahaan: false }">
+                    <div class="flex-1 p-5" x-data="{ openEditProfilePerusahaan: false }">
                         <!-- Button to Open Modal Perusahaan -->
                         <div class="flex justify-end md:mb-[30px]">
                             <button @click="openEditProfilePerusahaan = true"
@@ -57,7 +57,7 @@
                             <div @click.away="openEditProfilePerusahaan = false"
                                 class="bg-white rounded-lg shadow-lg w-3/4 max-w-5xl p-8 relative z-50 overflow-y-auto max-h-[85vh]">
                                 <button @click="openEditProfilePerusahaan = false"
-                                        class="absolute top-3 right-3 text-gray-600 hover:text-gray-900">&times;</button>
+                                    class="absolute top-3 right-3 text-gray-600 hover:text-gray-900">&times;</button>
 
                                 <h2 class="text-3xl font-semibold text-gray-800 mb-6">Edit Profil Perusahaan</h2>
 
@@ -199,7 +199,7 @@
                                         class="bg-white rounded-lg shadow-lg w-3/4 max-w-5xl p-8 relative z-50 overflow-y-auto max-h-[85vh]">
 
                                         <button @click="openEditProfileLowongan = false"
-                                        class="absolute top-3 right-3 text-gray-600 hover:text-gray-900">&times;</button>
+                                            class="absolute top-3 right-3 text-gray-600 hover:text-gray-900">&times;</button>
 
                                         <h2 class="text-2xl font-semibold text-gray-800 mb-4">Edit Profil Lowongan
                                             Bisnis</h2>
@@ -281,7 +281,7 @@
                                         class="bg-white rounded-lg shadow-lg w-3/4 max-w-5xl p-8 relative z-50 overflow-y-auto max-h-[85vh]">
 
                                         <button @click="openTambahLowongan = false"
-                                        class="absolute top-3 right-3 text-gray-600 hover:text-gray-900">&times;</button>
+                                            class="absolute top-3 right-3 text-gray-600 hover:text-gray-900">&times;</button>
 
                                         <h2 class="text-2xl font-semibold text-gray-800 mb-4">Tambah Lowongan Bisnis
                                             Bisnis</h2>

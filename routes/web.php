@@ -105,4 +105,8 @@ Route::get('/listBisnisPartner', function () {
     return view('listBisnisPartner');
 });
 
+Route::get('/settingAkun', function () {
+    return view('settingAkun');
+});
+
 

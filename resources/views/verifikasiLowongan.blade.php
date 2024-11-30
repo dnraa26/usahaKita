@@ -10,10 +10,10 @@
             <div class="mx-auto px-6 py-12 text-center">
                 <!-- Main Heading -->
                 <h1 class="text-3xl font-semibold text-white">
-                    Verifikasi Lowongan
+                    Verifikasi Perusahaan
                 </h1>
                 <!-- Subheading -->
-                <p class="mt-2 text-lg mt-4 text-white">
+                <p class="mt-3 text-lg text-white">
                     Semoga anda di terima oleh perusahaan yang anda harapkan
                 </p>
             </div>
@@ -39,7 +39,7 @@
                             <p class=" text-xs font-medium ">
                                 Ditolak
                                 </p>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-500" fill="currentColor"
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-500" fill="currentColor"
                                 viewBox="0 0 24 24">
                                 <path
                                     d="M18.3 5.7l-1.4-1.4L12 9.2 7.1 4.3 5.7 5.7l4.9 4.9-4.9 4.9 1.4 1.4L12 13l4.9 4.9 1.4-1.4-4.9-4.9z" />
@@ -58,11 +58,11 @@
                   <div class="bg-white shadow-lg rounded-lg p-6 flex flex-col justify-between mt-8">
                     <div class="flex justify-between">
                         <h3 class="text-2xl font-bold text-gray-700">Company B</h3>
-                        <div class="flex items-center gap-1 bg-blue-100 text-blue-600 rounded-lg flex justify-center items-center px-6 py-1">
+                        <div class="flex items-center gap-1 bg-blue-100 text-blue-600 rounded-lg flex justify-center items-center px-3 py-1">
                             <p class=" text-xs font-medium ">
                                 Sedang Menunggu
                                 </p>
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-500" fill="currentColor" viewBox="0 0 24 24">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-500" fill="currentColor" viewBox="0 0 24 24">
                                     <path d="M12 2a10 10 0 100 20 10 10 0 000-20zm0 18a8 8 0 110-16 8 8 0 010 16zm-.5-12h1v4.25l3.22 1.93-.5.86L11.5 13V8z"/>
                                 </svg>
                         </div>
@@ -84,7 +84,7 @@
                             <p class=" text-xs font-medium ">
                                 Diterima
                                 </p>
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500" fill="currentColor" viewBox="0 0 24 24">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500" fill="currentColor" viewBox="0 0 24 24">
                                     <path d="M9 16.2l-4.2-4.2-1.4 1.4L9 19 21 7l-1.4-1.4z"/>
                                 </svg>
                         </div>
